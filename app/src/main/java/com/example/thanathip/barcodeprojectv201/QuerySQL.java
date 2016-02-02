@@ -494,7 +494,6 @@ public class QuerySQL extends Activity{
     //c1
     QuerySQL(String value1){
         this.value1 = value1;
-
     }
     
     //c2
@@ -504,7 +503,7 @@ public class QuerySQL extends Activity{
         this.value2 = value2;
     }
     
-
+//test push
 
     //c7
     QuerySQL(String value1,String value2,String value3,String value4,String value5,String value6,String value7){
