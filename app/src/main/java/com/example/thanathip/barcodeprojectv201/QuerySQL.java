@@ -489,6 +489,7 @@ public class QuerySQL extends Activity{
     }
 
     //constructor
+    //don't sort the article
 
     //c1
     QuerySQL(String value1){
