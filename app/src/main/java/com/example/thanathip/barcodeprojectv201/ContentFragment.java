@@ -37,7 +37,7 @@ public class ContentFragment extends Fragment {
     SwipeRefreshLayout mSwipeRefresh;
     int MYACTIVITY_REQUEST_CODE = 101;
     TextView titleProduct,titleBatch,titleGood,titleBad,titleTransfer;
-
+    //test VCS
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View content = inflater.inflate(R.layout.content_fragment, container, false);
