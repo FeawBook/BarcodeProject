@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1565C0"
+    android:id="@+id/content_show"
+    android:configChanges="keyboardHidden|orientation|screenSize">
+
+
+    <TableLayout
+        android:id="@+id/table_all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_gravity="center">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+
+            android:id="@+id/row1">
+            <TextView
+                android:id="@+id/pic_show"
+                android:text="รูป"
+                android:textSize="24dp"
+                android:freezesText="true"/>
+            <TextView
+                android:id="@+id/product_show"
+                android:text="ผลิตภัณฑ์"
+                android:textSize="24dp"
+                android:layout_marginLeft="30dp"
+                android:freezesText="true"/>
+            <TextView
+                android:id="@+id/batch_show"
+                android:text="Batch NO."
+                android:textSize="24dp"
+                android:layout_marginLeft="30dp"
+                android:freezesText="true"/>
+            <TextView
+                android:id="@+id/good_show"
+                android:text="ดี"
+                android:textSize="24dp"
+                android:layout_marginLeft="30dp"
+                android:freezesText="true"/>
+            <TextView
+                android:id="@+id/bad_show"
+                android:text="เสีย"
+                android:textSize="24dp"
+                android:layout_marginLeft="30dp"
+                android:freezesText="true"/>
+            <TextView
+                android:id="@+id/transfer"
+                android:text="โอน"
+                android:textSize="24dp"
+                android:layout_marginLeft="30dp"
+                android:freezesText="true"/>
+        </TableRow>
+
+
+
+
+        <view
+            android:id="@+id/recycler_view"
+            class="android.support.v7.widget.RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:freezesText="true"/>
+
+    </TableLayout>
+
+    <!--<ProgressBar-->
+        <!--android:id="@+id/progress_bar"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true" />-->
+
+</RelativeLayout>

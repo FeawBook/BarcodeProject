@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView
+        android:text="test"
+        android:id="@+id/textAuto"
+        android:layout_width="275dp"
+        android:layout_height="150dp"
+        android:textSize="24px"
+        android:elevation="20dp"
+        android:background="@drawable/myrect"
+        android:gravity="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"/>
+
+</LinearLayout>

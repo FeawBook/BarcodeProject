@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0F7FA"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="โปรดเลือกรายการของเสีย"
+        android:textStyle="bold"
+        android:textAppearance="@dimen/abc_action_bar_content_inset_material"
+        android:textSize="24px"
+        android:textColor="#795548"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="500dp"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView1"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="500dp"
+        android:ems="15"
+        android:cursorVisible="true"
+        android:completionThreshold="1" />
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridview"
+    android:layout_width="420dp"
+    android:layout_height="550dp"
+    android:columnWidth="100dp"
+    android:numColumns="4"
+    android:verticalSpacing="1dp"
+    android:horizontalSpacing="1dp"
+    android:stretchMode="none"
+    android:gravity="right"
+    android:layout_marginTop="100dp"
+    android:layout_marginLeft="500dp"
+    android:layout_marginBottom="20dp"
+    android:paddingBottom="5dp"/>
+
+
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gridview2"
+        android:layout_width="420dp"
+        android:layout_height="550dp"
+        android:columnWidth="100dp"
+        android:numColumns="4"
+        android:verticalSpacing="1dp"
+        android:horizontalSpacing="1dp"
+        android:stretchMode="none"
+        android:gravity="right"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="500dp"
+        android:layout_marginBottom="100dp"
+        android:paddingBottom="5dp"/>
+
+    <ImageView
+        android:id="@+id/pic_for_fail"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/myrect"/>
+
+    <Button
+        android:text="อื่นๆ"
+        android:id="@+id/Fail_etc"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:textSize="18px"
+        android:elevation="20dp"
+        android:layout_marginLeft="702dp"
+        android:layout_marginTop="302dp"
+        android:background="@drawable/myrect"
+        android:gravity="center"
+        android:onClick="Clicked"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Small" />
+
+    <Button
+        android:id="@+id/btnOK"
+        android:text="ตกลง"
+        android:layout_width="198dp"
+        android:layout_height="55dp"
+        android:textSize="24px"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"
+        android:background="@drawable/selector_change_color"
+        android:layout_marginLeft="500dp"
+        android:textColor="#000"
+        android:layout_marginTop="500dp"/>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:text="ยกเลิก"
+        android:layout_width="198dp"
+        android:layout_height="55dp"
+        android:textSize="24px"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"
+        android:background="@drawable/select_press_red"
+        android:layout_marginLeft="700dp"
+        android:textColor="#EEEEEE"
+        android:layout_marginTop="500dp"/>
+    <TextView
+        android:id="@+id/textFailDetail"
+        android:text=""
+        android:layout_below="@+id/pic_for_fail"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:textColor="#FF9800"
+        android:textStyle="bold"
+        android:textSize="18px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <!--<Button-->
+        <!--android:id="@+id/btnAnother"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_width="500dp"-->
+        <!--android:layout_marginLeft="350dp"-->
+        <!--android:text="อื่นๆ"-->
+       <!-- -->
+        <!--android:gravity="center"/>-->
+
+</RelativeLayout>

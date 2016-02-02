@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="800dp"
+    android:layout_height="800dp"
+    android:background="#23d5c6"
+    android:id="@+id/another_layout">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:gravity="center">
+        <TextView
+            android:text="โปรดเลือกรายการของเสีย"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="36px"
+            android:layout_marginTop="10dp"
+            />
+        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/list_fail_detail"
+
+            android:layout_width="800dp"
+            android:layout_height="800dp"
+            android:columnWidth="120dp"
+            android:numColumns="auto_fit"
+            android:verticalSpacing="4dp"
+            android:horizontalSpacing="4dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center"
+            android:layout_marginTop="80dp"
+            android:paddingBottom="10dp"/>
+
+
+        <!--<Button-->
+            <!--android:id="@+id/button1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="ตกลง" />-->
+    </RelativeLayout>
+</RelativeLayout>

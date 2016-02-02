@@ -1,0 +1,37 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+
+   >
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ColImgPath"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_place_black_24dp"
+            />
+
+        <TextView
+            android:id="@+id/title"
+            android:text="Column 1"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:textColor="#212121"
+            android:textSize="28px"
+            android:backgroundTintMode="screen"
+            android:backgroundTint="@android:color/background_dark"
+            android:textStyle="bold"/>
+
+
+
+    </TableRow>
+
+
+</TableLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1565C0"
+    android:id="@+id/content_show">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="50dp"
+        android:layout_gravity="center"
+        android:id="@+id/table_all"
+        >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+
+            android:id="@+id/row1">
+            <TextView
+                android:text="รูป"
+                android:textSize="48dp"
+                android:id="@+id/pic_show"/>
+            <TextView
+                android:id="@+id/product_show"
+                android:text="ผลิตภัณฑ์"
+                android:textSize="48dp"
+                android:layout_marginLeft="100dp"/>
+            <TextView
+                android:id="@+id/batch_show"
+                android:text="Batch NO."
+                android:textSize="48dp"
+                android:layout_marginLeft="100dp"/>
+            <TextView
+                android:id="@+id/good_show"
+                android:text="ดี"
+                android:textSize="48dp"
+                android:layout_marginLeft="100dp"/>
+            <TextView
+                android:id="@+id/bad_show"
+                android:text="เสีย"
+                android:textSize="48dp"
+                android:layout_marginLeft="100dp"/>
+            <TextView
+                android:id="@+id/transfer"
+                android:text="โอน"
+                android:textSize="48dp"
+                android:layout_marginLeft="100dp"/>
+        </TableRow>
+
+
+<ScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+
+        <view
+            android:id="@+id/recycler_view"
+            class="android.support.v7.widget.RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+</ScrollView>
+    </TableLayout>
+
+    <!--<ProgressBar-->
+        <!--android:id="@+id/progress_bar"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true" />-->
+
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<TextView
+android:text="test"
+android:id="@+id/text1"
+android:layout_width="100dp"
+android:layout_height="100dp"
+android:textSize="18px"
+android:elevation="20dp"
+android:background="@drawable/myrect"
+android:layout_margin="@dimen/abc_action_bar_icon_vertical_padding_material"
+android:gravity="center"
+android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"
+xmlns:android="http://schemas.android.com/apk/res/android" />
+
+

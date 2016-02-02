@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="65dp"
+    android:id="@+id/testLayout"
+    android:background="@drawable/myrect">
+    <TextView
+
+        android:id="@+id/number"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="24px"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#FFEB3B"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"/>
+    <TextView
+
+        android:id="@+id/numberDeliver"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:textSize="21px"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#BF360C"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"/>
+
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<TextView
+    android:id="@+id/textFailList"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:textSize="18px"
+    android:elevation="20dp"
+    android:gravity="center"
+    android:textColor="#FFFF"
+    android:background="@drawable/list_selector"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
+
+
+
+    <!--<Button-->
+    <!--android:id="@+id/text2"-->
+
+    <!--android:text="test"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:textSize="24px"/>-->

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="150dp">
+
+    <TextView
+        android:text="test"
+        android:id="@+id/textShow"
+        android:layout_width="275dp"
+        android:layout_height="150dp"
+        android:textSize="24px"
+        android:elevation="20dp"
+        android:background="@drawable/myrect"
+        android:gravity="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"/>
+
+
+
+</RelativeLayout>

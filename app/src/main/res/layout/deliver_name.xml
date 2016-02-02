@@ -1,0 +1,10 @@
+<TextView
+    android:id="@+id/txtDeliver"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:textSize="18px"
+    android:elevation="20dp"
+    android:gravity="center"
+    android:textColor="#000"
+    android:background="@drawable/list_selector"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

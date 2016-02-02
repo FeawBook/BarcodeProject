@@ -1,0 +1,301 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="barcoode_project.example.thanathip.barcode_project.SecondActivity"
+    android:background="#3F51B5">
+
+
+
+    <!--<TableLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/table_for_btn"-->
+    <!-->-->
+    <!--<TableRow-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:id="@+id/row1">-->
+    <!--<EditText-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="300dp"-->
+    <!--android:id="@+id/edit_num"-->
+    <!--android:layout_span="3" />-->
+
+    <!--</TableRow>-->
+    <!--<TableRow-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:id="@+id/row2">-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/num1"-->
+    <!--android:text="1"/>-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/num2"-->
+    <!--android:text="2"/>-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/num3"-->
+    <!--android:text="3"/>-->
+
+    <!--</TableRow>-->
+
+    <!--<TableRow-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:id="@+id/row3">-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/num4"-->
+    <!--android:text="4"/>-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/num5"-->
+    <!--android:text="5"/>-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/num6"-->
+    <!--android:text="6"/>-->
+
+
+    <!--</TableRow>-->
+
+    <!--<TableRow-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:id="@+id/row4">-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/num7"-->
+    <!--android:text="7"/>-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/num8"-->
+    <!--android:text="8"/>-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/num9"-->
+    <!--android:text="9"/>-->
+
+
+    <!--</TableRow>-->
+
+    <!--<TableRow-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:id="@+id/row5">-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/delete"-->
+    <!--android:text="Delete"/>-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/num0"-->
+    <!--android:text="0"/>-->
+    <!--<Button-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:id="@+id/backspace"-->
+    <!--android:background="#FF00"-->
+    <!--android:text="Backspace"-->
+    <!--android:textColor="#FFFF"/>-->
+
+    <!--</TableRow>-->
+
+    <!--</TableLayout>-->
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:id="@+id/edtNumber"
+        android:cursorVisible="false"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="75dp"
+        android:phoneNumber="true"
+        android:numeric="integer"
+        android:background="@drawable/myrect"
+        android:textColor="#BBDEFB"
+        android:textAppearance="@style/AlertDialog.AppCompat.Light"
+        android:textSize="36px"
+        android:layout_toRightOf="@+id/imgEmployee"
+        />
+
+    <TextView
+        android:id="@+id/unitTran"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="48px"
+        android:textColor="#FFF"
+        android:layout_marginLeft="800dp"
+        android:layout_marginTop="125dp"
+        android:background="@drawable/myrect"
+
+        />
+
+    <TextView
+        android:id="@+id/beforeTran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="18px"
+        android:textColor="#FFF"
+        android:text="xxx"
+        android:layout_marginLeft="400dp"
+        android:layout_marginTop="610dp"
+
+
+        />
+
+    <ImageView
+        android:id="@+id/picNameFollow"
+        android:layout_height="200px"
+        android:layout_width="200px"
+        android:src="@drawable/power_utah"
+        android:layout_marginLeft="800dp"
+        android:layout_marginTop="200dp"
+        android:visibility="invisible"/>
+    <Button
+        android:id="@+id/nameFollow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="24px"
+        android:textColor="#000"
+        android:layout_marginLeft="810dp"
+        android:layout_marginTop="400dp"
+        android:visibility="invisible"
+        />
+
+    <ListView
+        android:id="@+id/list_of_name_follow"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/picNameFollow"
+        android:layout_toRightOf="@+id/beforeTran"
+        android:layout_toEndOf="@+id/beforeTran" />
+    <TextView
+        android:text="จำนวนที่ต้องการโอน"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="36px"
+        android:textColor="#FFF"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/imgEmployee"
+        />
+
+    <TextView
+        android:id="@+id/hideFollowerID"
+        android:visibility="invisible"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="hint data form follower"
+        android:layout_marginLeft="820dp"
+        android:layout_marginTop="600dp"/>
+
+    <ListView
+        android:id="@+id/list_transfer"
+        android:layout_height="415dp"
+        android:layout_width="300dp"
+
+        android:layout_marginTop="200dp"
+        android:background="@drawable/myrect"
+        android:layout_marginLeft="30dp"
+        android:choiceMode="singleChoice">
+    </ListView>
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/transfer_grid"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:columnWidth="120dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="4dp"
+        android:horizontalSpacing="4dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/list_selector"
+       android:layout_toRightOf="@+id/imgEmployee"
+
+        />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:textColor="#FFFF"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="650dp"
+        android:text="ออกจากการโอน"
+        android:background="@drawable/select_press_red"
+        android:layout_toEndOf="@+id/list_transfer"
+        />
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:textColor="#FFFF"
+        android:background="@drawable/selector_change_color"
+        android:layout_toEndOf="@+id/transfer_grid"
+        android:layout_toRightOf="@+id/imgEmployee"
+        android:layout_marginTop="650dp"
+        android:layout_marginLeft="100dp"
+        android:text="ตกลง"/>
+    <ImageView
+        android:id="@+id/imgEmployee"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:src="@drawable/noimage"
+        android:layout_toRightOf="@id/list_transfer"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="200dp"
+        />
+
+    <TextView
+        android:id="@+id/txtNameShow"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/myrect"
+        android:layout_toEndOf="@+id/imgEmployee"
+        android:layout_toRightOf="@id/list_transfer"
+        android:layout_marginTop="550dp"
+        android:layout_marginLeft="50dp"
+        android:text=""
+        android:gravity="center"
+        android:textSize="18px"
+        android:textColor="#FFFF"
+
+        />
+    <TextView
+        android:id="@+id/txtNameList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/list_transfer"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="40dp"
+        android:text="โปรดเลือกรายชื่อ"
+        android:textSize="36px"
+        android:textColor="#FFFF"/>
+
+</RelativeLayout>
