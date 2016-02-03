@@ -1,81 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_show"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1565C0"
-    android:id="@+id/content_group_show"
-    android:configChanges="keyboardHidden|orientation|screenSize">
+    android:orientation="horizontal"
+    android:weightSum="6">
+
+    <TextView
+        android:textColor="#00e6ff"
+        android:textSize="12sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="" />
+
+    <TextView
+        android:textColor="#00e6ff"
+        android:textSize="12sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="product" />
+
+    <TextView
+        android:textColor="#00e6ff"
+        android:textSize="12sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="batch" />
+
+    <TextView
+        android:textColor="#00e6ff"
+        android:textSize="12sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="ดี" />
+
+    <TextView
+        android:textColor="#00e6ff"
+        android:textSize="12sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="เสีย" />
+
+    <TextView
+        android:textColor="#00e6ff"
+        android:textSize="12sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="โอน" />
 
 
-    <TableLayout
-        android:id="@+id/table_all"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_gravity="center"
-        >
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-
-            android:id="@+id/row1">
-            <TextView
-                android:id="@+id/pic_show"
-                android:text="รูป"
-                android:textSize="36dp"
-                android:freezesText="true"/>
-            <TextView
-                android:id="@+id/product_show"
-                android:text="ผลิตภัณฑ์"
-                android:textSize="36dp"
-                android:layout_marginLeft="50dp"
-                android:freezesText="true"/>
-            <TextView
-                android:id="@+id/batch_show"
-                android:text="Batch NO."
-                android:textSize="36dp"
-                android:layout_marginLeft="50dp"
-                android:freezesText="true"/>
-            <TextView
-                android:id="@+id/good_show"
-                android:text="ดี"
-                android:textSize="36dp"
-                android:layout_marginLeft="50dp"
-                android:freezesText="true"/>
-            <TextView
-                android:id="@+id/bad_show"
-                android:text="เสีย"
-                android:textSize="36dp"
-                android:layout_marginLeft="50dp"
-                android:freezesText="true"/>
-            <TextView
-                android:id="@+id/transfer"
-                android:text="โอน"
-                android:textSize="36dp"
-                android:layout_marginLeft="50dp"
-                android:freezesText="true"/>
-        </TableRow>
-
-
-
-
-        <view
-            android:id="@+id/recycler_view"
-            class="android.support.v7.widget.RecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:freezesText="true"/>
-
-    </TableLayout>
-
-
-</RelativeLayout>
+</LinearLayout>

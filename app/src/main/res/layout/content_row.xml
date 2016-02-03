@@ -1,177 +1,166 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
 
-    android:layout_width="300dp"
-    android:layout_height="500dp"
-    android:layout_margin="8dp"
-    android:background="#1565C0"
-    card_view:cardBackgroundColor="#1565C0"
-    card_view:cardElevation="10dp"
     android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:background="#1565C0"
+    android:saveEnabled="true"
+    card_view:cardBackgroundColor="#1565C0"
     card_view:cardCornerRadius="20dp"
-    android:saveEnabled="true">
-
+    card_view:cardElevation="10dp">
 
 
     <RelativeLayout
-        android:layout_width="1300dp"
-        android:layout_height="match_parent"
-        android:background="#1565C0"
         android:id="@+id/card_content"
-        >
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#1565C0">
 
 
         <ImageView
             android:id="@+id/thumbnail"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:scaleType="centerCrop"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:background="@drawable/radian"
-            android:src="@drawable/power_utah"
-            android:elevation="10dp"/>
+            android:elevation="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/power_utah" />
 
 
         <TextView
             android:id="@+id/nameEmployee"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
             android:layout_below="@+id/thumbnail"
-
-            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
             android:text="โปรดติดต่อแผนกเทคโนโลยีสารสนเทศ"
             android:textColor="#CDDC39"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="28dp"
             android:layout_toRightOf="@+id/thumbnail"
+            android:gravity="center"
             android:maxLines="3"
             android:padding="8dp"
             android:text=""
             android:textColor="#FF8A80"
-            android:textSize="28dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="28dp"
-            android:gravity="center"/>
+            android:textSize="28dp" />
+
         <TextView
             android:id="@+id/batch"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/nameEmployee"
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/title"
             android:maxLines="3"
             android:padding="8dp"
             android:text="batch"
             android:textColor="#FF8A80"
-            android:textSize="28dp"
-            android:layout_marginLeft="100dp"/>
+            android:textSize="20sp" />
+
         <ImageButton
-            android:layout_height="100dp"
-            android:layout_width="100dp"
-            android:layout_toRightOf="@+id/batch"
-            android:layout_centerVertical="true"
-            android:background="@drawable/list_selector"
-            android:maxLines="3"
-            android:layout_marginLeft="100dp"
-            android:src="@drawable/like_icon_gold"
-            android:scaleType="centerCrop"
             android:id="@+id/like"
-
-
-            />
-
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/list_selector"
+            android:scaleType="centerCrop"
+            android:src="@drawable/like_icon_gold" />
 
 
         <ImageButton
-            android:layout_height="100dp"
-            android:layout_width="100dp"
-            android:layout_toRightOf="@+id/like"
-            android:layout_centerVertical="true"
-            android:maxLines="3"
-            android:layout_marginLeft="100dp"
-            android:src="@drawable/dislike1"
-            android:scaleType="centerCrop"
             android:id="@+id/dislike"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_below="@+id/like"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/list_selector"
-            />
+            android:maxLines="3"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dislike1" />
 
 
         <ImageButton
-            android:layout_height="100dp"
-            android:layout_width="100dp"
-            android:layout_toRightOf="@+id/dislike"
-            android:layout_centerVertical="true"
-            android:maxLines="3"
-            android:layout_marginLeft="75dp"
-            android:src="@drawable/transferto"
-            android:scaleType="centerCrop"
             android:id="@+id/btnTransfer"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_below="@+id/dislike"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/list_selector"
-            />
+            android:maxLines="3"
+            android:scaleType="centerCrop"
+            android:src="@drawable/transferto" />
 
 
         <TextView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/like"
             android:id="@+id/textLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@+id/like"
             android:freezesText="true"
-            android:visibility="visible"
+            android:saveEnabled="true"
             android:text="0"
             android:textColor="#64DD17"
-            android:layout_marginLeft="690dp"
             android:textSize="48dp"
-            android:layout_marginTop="65dp"
-           android:saveEnabled="true"
-            android:gravity="center"
-            />
+            android:visibility="visible" />
 
 
         <!--<TextView-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_width="100dp"-->
-            <!--android:id="@+id/texttmp"-->
-            <!--android:textColor="#D50000"-->
-            <!--android:layout_marginLeft="905dp"-->
-            <!--android:textSize="48dp"-->
-            <!--android:layout_below="@+id/dislike"-->
-            <!--android:layout_marginTop="65dp"-->
-            <!--android:gravity="center"-->
-            <!--/>-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:id="@+id/texttmp"-->
+        <!--android:textColor="#D50000"-->
+        <!--android:layout_marginLeft="905dp"-->
+        <!--android:textSize="48dp"-->
+        <!--android:layout_below="@+id/dislike"-->
+        <!--android:layout_marginTop="65dp"-->
+        <!--android:gravity="center"-->
+        <!--/>-->
 
         <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@+id/like"-->
-            <!--android:id="@+id/test"-->
-            <!--android:textColor="#000"-->
-            <!--android:layout_marginLeft="750dp"-->
-            <!--android:textSize="48dp"-->
-            <!--android:layout_marginTop="40dp"-->
-            <!--/>-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/like"-->
+        <!--android:id="@+id/test"-->
+        <!--android:textColor="#000"-->
+        <!--android:layout_marginLeft="750dp"-->
+        <!--android:textSize="48dp"-->
+        <!--android:layout_marginTop="40dp"-->
+        <!--/>-->
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/dislike"
             android:id="@+id/textDislike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/dislike"
+            android:layout_below="@+id/textLike"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/dislike"
             android:text="0"
             android:textColor="#D50000"
-            android:layout_marginLeft="905dp"
-            android:textSize="48dp"
-            android:layout_marginTop="65dp"
-            android:gravity="center"
-           />
+            android:textSize="48dp" />
 
     </RelativeLayout>
-
 
 
 </android.support.v7.widget.CardView>
