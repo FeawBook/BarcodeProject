@@ -18,9 +18,9 @@ public class HomePageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View picHome = inflater.inflate(R.layout.home_page_fragment,container,false);
-        ImageView image = (ImageView)picHome.findViewById(R.id.testPic);
-        Animation animation = AnimationUtils.loadAnimation(getActivity(),R.anim.blink);
+        View picHome = inflater.inflate(R.layout.home_page_fragment, container, false);
+        ImageView image = (ImageView) picHome.findViewById(R.id.testPic);
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         image.startAnimation(animation);
         return picHome;
     }

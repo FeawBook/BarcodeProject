@@ -27,25 +27,28 @@ import java.util.List;
 /**
  * Created by thanathip on 27/7/2558.
  */
-public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.CustomViewHolder>{
+public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.CustomViewHolder> {
     public List<FeedItem> feedItemList;
     public Context mContext;
 
     String show;
     String unitInWorkGro = "";
+
     public MyRecyclerAdapter(Context context, List<FeedItem> feedItemList) {
         this.feedItemList = feedItemList;
         this.mContext = context;
     }
+
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.content_row, null);
         return new CustomViewHolder(view);
     }
+
     @Override
-    public void onBindViewHolder(final CustomViewHolder customViewHolder,final int i) {
-       final FeedItem feedItem = feedItemList.get(i);
+    public void onBindViewHolder(final CustomViewHolder customViewHolder, final int i) {
+        final FeedItem feedItem = feedItemList.get(i);
         customViewHolder.textView.setText(Html.fromHtml(feedItem.getWorkDetail()));
         customViewHolder.textBatch.setText(Html.fromHtml(feedItem.getBatch()));
         customViewHolder.countLike.setText(Html.fromHtml(feedItem.getUnitWork()));
@@ -66,9 +69,9 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
 
             for (int j = 0; j < picID.length(); j++) {
                 JSONObject objPicID = picID.getJSONObject(j);
-                msg = "http://192.168.0.99/main/hr/" +objPicID.getString("empImg");
+                msg = "http://192.168.0.99/main/hr/" + objPicID.getString("empImg");
                 peopleID = objPicID.getString("peopleID");
-                Picasso.with(mContext).load(msg).resize(150,150)
+                Picasso.with(mContext).load(msg).resize(150, 150)
                         .transform(transformation).error(R.drawable.myrect).placeholder(R.drawable.myrect).noFade()
                         .into(customViewHolder.imageView);
 
@@ -90,7 +93,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
                 name = objName.getString("fName");
                 iName = objName.getString("iName");
                 lName = objName.getString("sName");
-                customViewHolder.nameEmployee.setText(iName+name+" "+lName);
+                customViewHolder.nameEmployee.setText(iName + name + " " + lName);
 
             }
         } catch (JSONException e) {
@@ -112,16 +115,16 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         final String service = "บริการดิน";
         String preparePepper = "เตรียมดินป่น";
 
-        if(feedItem.getWorkDetail().equals(service)){
+        if (feedItem.getWorkDetail().equals(service)) {
             customViewHolder.countDislike.setVisibility(View.INVISIBLE);
             customViewHolder.btnDislike.setVisibility(View.INVISIBLE);
 
 
-        }else if(feedItem.getWorkDetail().equals(checkStock)){
+        } else if (feedItem.getWorkDetail().equals(checkStock)) {
             customViewHolder.countDislike.setVisibility(View.INVISIBLE);
             customViewHolder.btnDislike.setVisibility(View.INVISIBLE);
 
-        }else if(feedItem.getWorkDetail().equals(preparePepper)){
+        } else if (feedItem.getWorkDetail().equals(preparePepper)) {
             customViewHolder.btnTransfer.setVisibility(View.INVISIBLE);
 
         }
@@ -129,14 +132,14 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         //***************************get productID**************************************//
         QuerySQL getProductID = new QuerySQL(feedItem.getOrderID());
         String showProductID = "";
-        try{
+        try {
             JSONArray arrProduct = new JSONArray(getProductID.getProductID());
-            for(int j=0;j<arrProduct.length();j++){
+            for (int j = 0; j < arrProduct.length(); j++) {
                 JSONObject objProduct = arrProduct.getJSONObject(j);
                 showProductID = objProduct.getString("ProductID");
             }
             customViewHolder.textView.setText(showProductID);
-        }catch(JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         //***************************end get productID*********************************//
@@ -157,30 +160,28 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         //----------------------------Like Button-----------------------------------//
 
 
-
-
         customViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 //update database +1 when user click
 
-                if(feedItem.getWorkDetail().equals("การนำเข้าห้องอบ") || feedItem.getWorkDetail().equals("ออกจากห้องอบ")){
-                    Intent i = new Intent(mContext,UnitDeliver.class);
+                if (feedItem.getWorkDetail().equals("การนำเข้าห้องอบ") || feedItem.getWorkDetail().equals("ออกจากห้องอบ")) {
+                    Intent i = new Intent(mContext, UnitDeliver.class);
                     i.putExtra("EmployeeID", feedItem.getEmployeeID());
-                    i.putExtra("OrderID",feedItem.getOrderID());
-                    i.putExtra("WorkDetail",feedItem.getWorkDetail());
-                    i.putExtra("Batch",feedItem.getBatch());
-                    i.putExtra("DepartID",feedItem.getDepartID());
-                    i.putExtra("UnitWork",feedItem.getUnitWork());
-                    i.putExtra("UnitFollow",feedItem.getUnitFollow());
-                    i.putExtra("UnitStock",feedItem.getUnitStock());
-                    i.putExtra("DateMFG",feedItem.getDateFail());
-                    i.putExtra("ID",feedItem.getId_work());
-                    i.putExtra("UnitInWork",feedItem.getUnitInWork());
+                    i.putExtra("OrderID", feedItem.getOrderID());
+                    i.putExtra("WorkDetail", feedItem.getWorkDetail());
+                    i.putExtra("Batch", feedItem.getBatch());
+                    i.putExtra("DepartID", feedItem.getDepartID());
+                    i.putExtra("UnitWork", feedItem.getUnitWork());
+                    i.putExtra("UnitFollow", feedItem.getUnitFollow());
+                    i.putExtra("UnitStock", feedItem.getUnitStock());
+                    i.putExtra("DateMFG", feedItem.getDateFail());
+                    i.putExtra("ID", feedItem.getId_work());
+                    i.putExtra("UnitInWork", feedItem.getUnitInWork());
                     mContext.startActivity(i);
-                }else if(feedItem.getWorkDetail().equals("บริการดิน")){
+                } else if (feedItem.getWorkDetail().equals("บริการดิน")) {
                     Toast.makeText(mContext, "โปรดเลือกปุ่มโอน", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     CustomViewHolder holder = (CustomViewHolder) v.getTag();
                     final int position = holder.getPosition();
                     final FeedItem feedItem = feedItemList.get(position);
@@ -215,20 +216,20 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
                     customViewHolder.countLike.setText(msg);
                     int sumUnit;
                     int UnitInWorkCheck = Integer.parseInt(msgUnitInWork);
-                    sumUnit = Integer.parseInt(msg)+Integer.parseInt(msgUnitFail);
+                    sumUnit = Integer.parseInt(msg) + Integer.parseInt(msgUnitFail);
                     final AlertDialog.Builder dDialog = new AlertDialog.Builder(mContext);
 
-                    if(UnitInWorkCheck < sumUnit){
+                    if (UnitInWorkCheck < sumUnit) {
                         dDialog.setTitle("หยุด");
                         dDialog.setMessage("ค่าเกินจำนวน");
                         dDialog.setPositiveButton("Close", null);
                         dDialog.show();
-                        int overUnitWork = Integer.parseInt(msg)-1;
+                        int overUnitWork = Integer.parseInt(msg) - 1;
                         String strOverUnitWork = Integer.toString(overUnitWork);
                         customViewHolder.countLike.setText(strOverUnitWork);
-                       //update data
-                       // String overGood = customViewHolder.countLike.getText().toString();
-                        QuerySQL updateOver = new QuerySQL(strOverUnitWork,update_count_work);
+                        //update data
+                        // String overGood = customViewHolder.countLike.getText().toString();
+                        QuerySQL updateOver = new QuerySQL(strOverUnitWork, update_count_work);
                         updateOver.normalLike();
 
 
@@ -244,14 +245,14 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         String jsonUnitWork = getUnitWork.getUnitWork();
         String showUnitWork;
 
-        try{
+        try {
             JSONArray arrUnitWork = new JSONArray(jsonUnitWork);
-            for(int j=0;j<arrUnitWork.length();j++){
+            for (int j = 0; j < arrUnitWork.length(); j++) {
                 JSONObject objUnitWork = arrUnitWork.getJSONObject(j);
                 showUnitWork = objUnitWork.getString("UnitWork");
                 customViewHolder.countLike.setText(showUnitWork);
             }
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -281,7 +282,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
 
                 String overFail = customViewHolder.countDislike.getText().toString();
                 String overLikeCheck = customViewHolder.countLike.getText().toString();
-                int overDisLike = Integer.parseInt(overFail)+Integer.parseInt(overLikeCheck);
+                int overDisLike = Integer.parseInt(overFail) + Integer.parseInt(overLikeCheck);
 
                 //check Over
                 String update_count_work = feedItem.getId_work();
@@ -301,9 +302,9 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
                 }
 
                 int checkUnitInWorkFail = Integer.parseInt(showUnitInWorkFail);
-                if(checkUnitInWorkFail>overDisLike){
+                if (checkUnitInWorkFail > overDisLike) {
                     if (feedItem.getWorkDetail().equals("การนำเข้าห้องอบ") || feedItem.getWorkDetail().equals("ออกจากห้องอบ")) {
-                        Intent UnitFailStove = new Intent(mContext,UnitFailStove
+                        Intent UnitFailStove = new Intent(mContext, UnitFailStove
                                 .class);
                         UnitFailStove.putExtra("idStove", feedItem.getId_work());
                         UnitFailStove.putExtra("EmployeeID", feedItem.getEmployeeID());
@@ -311,7 +312,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
                         UnitFailStove.putExtra("orderID", feedItem.getOrderID());
                         mContext.startActivity(UnitFailStove);
                     } else {
-                        Intent dislike_activity = new Intent(mContext,UnitFail.class);
+                        Intent dislike_activity = new Intent(mContext, UnitFail.class);
                         dislike_activity.putExtra("sendFail", feedItem.getId_work());
                         dislike_activity.putExtra("Batch", feedItem.getBatch());
                         dislike_activity.putExtra("EmployeeID", feedItem.getEmployeeID());
@@ -321,12 +322,12 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
                         dislike_activity.putExtra("DepartID", feedItem.getDepartID());
                         mContext.startActivity(dislike_activity);
                     }
-                }else{
-                        final AlertDialog.Builder dDialog = new AlertDialog.Builder(mContext);
-                        dDialog.setTitle("หยุด");
-                        dDialog.setMessage("ค่าเกินจำนวน");
-                        dDialog.setPositiveButton("Close", null);
-                        dDialog.show();
+                } else {
+                    final AlertDialog.Builder dDialog = new AlertDialog.Builder(mContext);
+                    dDialog.setTitle("หยุด");
+                    dDialog.setMessage("ค่าเกินจำนวน");
+                    dDialog.setPositiveButton("Close", null);
+                    dDialog.show();
 
 //แก้
 
@@ -353,12 +354,11 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         }
         String have = "มี";
         String none = "ไม่มี";
-        if(Integer.parseInt(showUnitFail) > 0)
-        {
+        if (Integer.parseInt(showUnitFail) > 0) {
             QuerySQL updateHave = new QuerySQL(have, feedItem.getId_work());
             updateHave.updateHave();
 
-        }else{
+        } else {
             QuerySQL updateHave = new QuerySQL(none, feedItem.getId_work());
             updateHave.updateHave();
         }
@@ -392,6 +392,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         customViewHolder.countLike.setTag(customViewHolder);
         customViewHolder.countDislike.setTag(customViewHolder);
     }
+
     @Override
     public long getItemId(int position) {
         return super.getItemId(position);
@@ -411,26 +412,23 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         public ImageView imageView;
         public TextView textView;
         public TextView textBatch;
-        public ImageButton btnLike,btnDislike,btnTransfer;
-        public TextView countLike,countDislike,nameEmployee;
+        public ImageButton btnLike, btnDislike, btnTransfer;
+        public TextView countLike, countDislike, nameEmployee;
+
         public CustomViewHolder(View view) {
             super(view);
             this.imageView = (ImageView) view.findViewById(R.id.thumbnail);
             this.textView = (TextView) view.findViewById(R.id.title);
             this.textBatch = (TextView) view.findViewById(R.id.batch);
-            this.btnLike = (ImageButton)view.findViewById(R.id.like);
-            this.btnDislike = (ImageButton)view.findViewById(R.id.dislike);
-            this.btnTransfer = (ImageButton)view.findViewById(R.id.btnTransfer);
-            this.countLike = (TextView)view.findViewById(R.id.textLike);
-            this.countDislike = (TextView)view.findViewById(R.id.textDislike);
-            this.nameEmployee = (TextView)view.findViewById(R.id.nameEmployee);
+            this.btnLike = (ImageButton) view.findViewById(R.id.like);
+            this.btnDislike = (ImageButton) view.findViewById(R.id.dislike);
+            this.btnTransfer = (ImageButton) view.findViewById(R.id.btnTransfer);
+            this.countLike = (TextView) view.findViewById(R.id.textLike);
+            this.countDislike = (TextView) view.findViewById(R.id.textDislike);
+            this.nameEmployee = (TextView) view.findViewById(R.id.nameEmployee);
         }
 
     }
-
-
-
-
 
 
 }

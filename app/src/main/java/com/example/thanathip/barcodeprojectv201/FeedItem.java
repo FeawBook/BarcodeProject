@@ -4,7 +4,7 @@ package com.example.thanathip.barcodeprojectv201;
  * Created by thanathip on 27/7/2558.
  */
 public class FeedItem {
-   // private String title;
+    // private String title;
     private String ImageID;
     private String ImageName;
     private String thumbnail;
@@ -12,7 +12,7 @@ public class FeedItem {
     private String EmployeeID;
     private String WorkDetail;
     private String batch;
-    private String UnitWork,UnitFail;
+    private String UnitWork, UnitFail;
     private String id_work;
     private String picID;
     private String follow;
@@ -41,10 +41,11 @@ public class FeedItem {
         this.ImageID = ImageID;
     }
 
-    public String getImageName(){
+    public String getImageName() {
         return ImageName;
     }
-    public void setImageName(String ImageName){
+
+    public void setImageName(String ImageName) {
         this.ImageName = ImageName;
     }
 
@@ -57,138 +58,155 @@ public class FeedItem {
     }
 
 
-
-    public String getEmployeeID(){
+    public String getEmployeeID() {
         return EmployeeID;
     }
 
-    public void setEmployeeID(String EmployeeID){
+    public void setEmployeeID(String EmployeeID) {
         this.EmployeeID = EmployeeID;
     }
 
-    public String getWorkDetail(){
+    public String getWorkDetail() {
         return WorkDetail;
     }
-    public void setWorkDetail(String Workdetail){
+
+    public void setWorkDetail(String Workdetail) {
         this.WorkDetail = Workdetail;
     }
 
-    public String getBatch(){
+    public String getBatch() {
         return batch;
     }
 
-    public void setBatch(String batch){
+    public void setBatch(String batch) {
         this.batch = batch;
     }
 
-    public String getUnitWork(){
+    public String getUnitWork() {
         return UnitWork;
     }
-    public void setUnitWork(String UnitWork){
+
+    public void setUnitWork(String UnitWork) {
         this.UnitWork = UnitWork;
     }
 
-    public String getUnitFail(){
+    public String getUnitFail() {
         return UnitFail;
     }
-    public void setUnitFail(String UnitFail){
+
+    public void setUnitFail(String UnitFail) {
         this.UnitFail = UnitFail;
     }
 
-    public String getId_work(){
+    public String getId_work() {
         return id_work;
     }
-    public void setId_work(String id_work){
-        this.id_work= id_work;
+
+    public void setId_work(String id_work) {
+        this.id_work = id_work;
     }
 
-    public String getCause(){
+    public String getCause() {
         return cause;
     }
-    public void setCause(String cause){
+
+    public void setCause(String cause) {
         this.cause = cause;
     }
 
-    public String getFailDetail(){
+    public String getFailDetail() {
         return FailDetail;
     }
-    public void setFailDetail(){
+
+    public void setFailDetail() {
         this.FailDetail = FailDetail;
     }
 
-    public String getPicID(){
+    public String getPicID() {
         return picID;
     }
-    public void setPicID(String picID){
+
+    public void setPicID(String picID) {
         this.picID = picID;
     }
 
-    public String getFollow(){
+    public String getFollow() {
         return follow;
     }
-    public void setFollow(String follow){
+
+    public void setFollow(String follow) {
         this.follow = follow;
     }
 
-    public String getUnitFollow(){
+    public String getUnitFollow() {
         return unitFollow;
     }
-    public void setUnitFollow(String unitFollow){
+
+    public void setUnitFollow(String unitFollow) {
         this.unitFollow = unitFollow;
     }
 
-    public String getProductID(){
+    public String getProductID() {
         return getProductID();
     }
-    public void setProductID(String productID){
+
+    public void setProductID(String productID) {
         this.productID = productID;
     }
-    public String getSaveLike(){
+
+    public String getSaveLike() {
         return saveLike;
     }
-    public void setSaveLike(String saveLike){
-            this.saveLike = saveLike;
+
+    public void setSaveLike(String saveLike) {
+        this.saveLike = saveLike;
     }
 
-    public String getOrderID(){
+    public String getOrderID() {
         return orderID;
     }
-    public void setOrderID(String orderID){
+
+    public void setOrderID(String orderID) {
         this.orderID = orderID;
     }
 
-    public String getDateFail(){
+    public String getDateFail() {
         return DateFail;
     }
-    public void setDateFail(String DateFail){
+
+    public void setDateFail(String DateFail) {
         this.DateFail = DateFail;
     }
 
-    public String getMarchID(){
+    public String getMarchID() {
         return marchID;
     }
-    public void setMarchID(String marchID){
+
+    public void setMarchID(String marchID) {
         this.marchID = marchID;
     }
 
-    public String getDepartID(){
+    public String getDepartID() {
         return departID;
     }
-    public void setDepartID(String departID){
+
+    public void setDepartID(String departID) {
         this.departID = departID;
     }
 
-    public String getUnitStock(){
+    public String getUnitStock() {
         return unitStock;
     }
-    public void setUnitStock(String unitStock){
+
+    public void setUnitStock(String unitStock) {
         this.unitStock = unitStock;
     }
 
-    public String getUnitInWork(){
+    public String getUnitInWork() {
         return unitInWork;
     }
-    public void setUnitInWork(String unitInWork){
+
+    public void setUnitInWork(String unitInWork) {
         this.unitInWork = unitInWork;
     }
 }

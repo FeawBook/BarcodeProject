@@ -1,4 +1,5 @@
 package com.example.thanathip.barcodeprojectv201;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -36,28 +37,29 @@ public class ContentFragment extends Fragment {
     private MyRecyclerAdapter adapter;
     SwipeRefreshLayout mSwipeRefresh;
     int MYACTIVITY_REQUEST_CODE = 101;
-    TextView titleProduct,titleBatch,titleGood,titleBad,titleTransfer;
+    TextView titleProduct, titleBatch, titleGood, titleBad, titleTransfer;
+
     //test VCS
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View content = inflater.inflate(R.layout.content_fragment, container, false);
         Fragment fragment = getFragmentManager().findFragmentById(R.layout.home_page_fragment);
-        if(fragment != null){
+        if (fragment != null) {
             getFragmentManager().beginTransaction().remove(fragment).commit();
             Toast.makeText(getActivity(), "show clear fragment", Toast.LENGTH_SHORT).show();
         }
 
-        mSwipeRefresh = (SwipeRefreshLayout)content.findViewById(R.id.mSwipeFragment);
+        mSwipeRefresh = (SwipeRefreshLayout) content.findViewById(R.id.mSwipeFragment);
         mRecyclerView = (RecyclerView) content.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
-        titleProduct = (TextView)content.findViewById(R.id.product_show);
-        titleBatch = (TextView)content.findViewById(R.id.batch_show);
-        titleGood = (TextView)content.findViewById(R.id.good_show);
-        titleBad = (TextView)content.findViewById(R.id.bad_show);
-        titleTransfer = (TextView)content.findViewById(R.id.transfer);
-        Typeface myCustomFont = Typeface.createFromAsset(getActivity().getAssets(),"font/NotoSerifThai-Bold.ttf");
-        Typeface EngFont = Typeface.createFromAsset(getActivity().getAssets(),"font/NotoSans-Bold.ttf");
+        titleProduct = (TextView) content.findViewById(R.id.product_show);
+        titleBatch = (TextView) content.findViewById(R.id.batch_show);
+        titleGood = (TextView) content.findViewById(R.id.good_show);
+        titleBad = (TextView) content.findViewById(R.id.bad_show);
+        titleTransfer = (TextView) content.findViewById(R.id.transfer);
+        Typeface myCustomFont = Typeface.createFromAsset(getActivity().getAssets(), "font/NotoSerifThai-Bold.ttf");
+        Typeface EngFont = Typeface.createFromAsset(getActivity().getAssets(), "font/NotoSans-Bold.ttf");
         titleProduct.setTypeface(myCustomFont);
         titleBatch.setTypeface(EngFont);
         titleGood.setTypeface(myCustomFont);
@@ -72,34 +74,33 @@ public class ContentFragment extends Fragment {
         mRecyclerView.setItemAnimator(new FadeInAnimator());
         mRecyclerView.getLayoutManager().onScrollStateChanged(50);
         parseJSON(getdata);
-            mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    parseJSON(getdata);
-                    mSwipeRefresh.setColorSchemeColors(Color.parseColor("#4183D7"),
-                            Color.parseColor("#F62459"),
-                            Color.parseColor("#03C9A9"),
-                            Color.parseColor("#F4D03F"));
-                    mSwipeRefresh.setRefreshing(false);
-                }
-            });
+        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                parseJSON(getdata);
+                mSwipeRefresh.setColorSchemeColors(Color.parseColor("#4183D7"),
+                        Color.parseColor("#F62459"),
+                        Color.parseColor("#03C9A9"),
+                        Color.parseColor("#F4D03F"));
+                mSwipeRefresh.setRefreshing(false);
+            }
+        });
         return content;
     }
 
 
-
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if ((requestCode == MYACTIVITY_REQUEST_CODE) && (resultCode == Activity.RESULT_OK))
             adapter.notifyDataSetChanged();
     }
-    private void parseJSON(String result){
-        try{
+
+    private void parseJSON(String result) {
+        try {
             JSONArray posts = new JSONArray(result);
             List<FeedItem> feedsList = new ArrayList<>();
-            for(int i=0;i<posts.length();i++){
+            for (int i = 0; i < posts.length(); i++) {
                 JSONObject post = posts.optJSONObject(i);
                 FeedItem item = new FeedItem();
                 item.setId_work(post.optString("ID"));
@@ -128,19 +129,16 @@ public class ContentFragment extends Fragment {
                 mRecyclerView.startAnimation(animation);
                 mRecyclerView.smoothScrollToPosition(0);
             }
-        }catch(JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-    ContentFragment(String getdata){
+
+    ContentFragment(String getdata) {
         this.getdata = getdata;
     }
 
     String getdata;
-
-
-
-
 
 
     public void onConfigurationChanged(Configuration newConfig) {
@@ -211,7 +209,7 @@ public class ContentFragment extends Fragment {
         //progress.dismiss();
         Log.i("Check", "onResume");
         //WIFI connection
-        WifiManager wifimanager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifimanager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
         AlertDialog.Builder dDialog = new AlertDialog.Builder(getActivity());
         switch (wifimanager.getWifiState()) {
 

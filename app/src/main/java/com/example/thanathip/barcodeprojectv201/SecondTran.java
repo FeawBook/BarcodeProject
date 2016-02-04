@@ -51,7 +51,7 @@ public class SecondTran extends Activity {
     Button btnPalace;
     ImageView followPic, imgEmp;
     ListView listNameFollow;
-    TextView unitInworkTemp;
+    TextView unitInworkTemp, txtUnitInWork;
     String unitWork, IDname, numOfUnitFollow, PersonalID, work_detail, BatchNo, orderID, DateMFG, ID, UnitInWorkFollower;
     String makeProduct = "ขึ้นรูปลูกถ้วย";
     String flateMakeProduct = "อัดขึ้นรูปลูกถ้วย";
@@ -111,6 +111,7 @@ public class SecondTran extends Activity {
         txtTotal = (TextView) findViewById(R.id.numTran);
         unitInworkTemp = (TextView) findViewById(R.id.txtUnitInWorkTemp);
         HowMuch = (TextView) findViewById(R.id.how_much);
+        txtUnitInWork = (TextView) findViewById(R.id.txtUnitInWork);
 
         edtTran.setVisibility(View.INVISIBLE);
         Intent i = getIntent();
@@ -641,6 +642,8 @@ public class SecondTran extends Activity {
                     txtTotal.setText(UnitInWorkFollower);
                     unitInworkTemp.setText(finalEmployeeID);
 
+                    //get UnitInWork
+                    txtUnitInWork.setText("จำนวนUnitInWorkทั้งหมด : " + UnitInWorkFollower + "ลูก");
 
                     checkPressButton = 1;
                 }

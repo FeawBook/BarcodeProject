@@ -26,22 +26,25 @@ import java.util.List;
 /**
  * Created by thanathip on 27/7/2558.
  */
-public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapterGroup.CustomViewHolder>{
+public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapterGroup.CustomViewHolder> {
     public List<FeedItem> feedItemList;
     public Context mContext;
     String show;
+
     public MyRecyclerAdapterGroup(Context context, List<FeedItem> feedItemList) {
         this.feedItemList = feedItemList;
         this.mContext = context;
     }
+
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.content_row_group, null);
         return new CustomViewHolder(view);
     }
+
     @Override
-    public void onBindViewHolder(final CustomViewHolder customViewHolder,final int i) {
+    public void onBindViewHolder(final CustomViewHolder customViewHolder, final int i) {
         final FeedItem feedItem = feedItemList.get(i);
         //Setting text view title
         customViewHolder.textView.setText(Html.fromHtml(feedItem.getWorkDetail()));
@@ -66,13 +69,13 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
         final String checkStock = "เช็คสต๊อคดินแท่ง";
         final String service = "บริการดิน";
         String preparePepper = "เตรียมดินป่น";
-        if(feedItem.getWorkDetail().equals(service)){
+        if (feedItem.getWorkDetail().equals(service)) {
             customViewHolder.countDislike.setVisibility(View.INVISIBLE);
             customViewHolder.btnDislike.setVisibility(View.INVISIBLE);
-        }else if(feedItem.getWorkDetail().equals(checkStock)){
+        } else if (feedItem.getWorkDetail().equals(checkStock)) {
             customViewHolder.countDislike.setVisibility(View.INVISIBLE);
             customViewHolder.btnDislike.setVisibility(View.INVISIBLE);
-        }else if(feedItem.getWorkDetail().equals(preparePepper)){
+        } else if (feedItem.getWorkDetail().equals(preparePepper)) {
             customViewHolder.btnTransfer.setVisibility(View.INVISIBLE);
 
         }
@@ -80,31 +83,31 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
         //***************************get productID**************************************//
         QuerySQL getProductID = new QuerySQL(feedItem.getOrderID());
         String showProductID = "";
-        try{
+        try {
             JSONArray arrProduct = new JSONArray(getProductID.getProductID());
-            for(int j=0;j<arrProduct.length();j++){
+            for (int j = 0; j < arrProduct.length(); j++) {
                 JSONObject objProduct = arrProduct.getJSONObject(j);
                 showProductID = objProduct.getString("ProductID");
                 QuerySQL getPicProduct = new QuerySQL(showProductID);
                 String urlProduct;
                 String nameProduct;
-                try{
+                try {
                     JSONArray arrURLproduct = new JSONArray(getPicProduct.getURLproductPic());
-                    for(int k=0;k<arrURLproduct.length();k++){
+                    for (int k = 0; k < arrURLproduct.length(); k++) {
                         JSONObject objURLproduct = arrURLproduct.getJSONObject(k);
                         urlProduct = objURLproduct.getString("product_pic");
                         nameProduct = objURLproduct.getString("product_name");
-                        Picasso.with(mContext).load(urlProduct).resize(200,200)
+                        Picasso.with(mContext).load(urlProduct).resize(200, 200)
                                 .transform(transformation).error(R.drawable.myrect).placeholder(R.drawable.myrect)
                                 .into(customViewHolder.imageView);
                         customViewHolder.nameEmployee.setText(nameProduct);
                     }
-                }catch(JSONException e){
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
             customViewHolder.textView.setText(showProductID);
-        }catch(JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         //***************************end get productID*********************************//
@@ -127,21 +130,21 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
             @Override
             public void onClick(final View v) {
                 //update database +1 when user click
-                if(feedItem.getWorkDetail().equals("การนำเข้าห้องอบ") || feedItem.getWorkDetail().equals("ออกจากห้องอบ")){
-                    Intent i = new Intent(mContext,UnitDeliver2.class);
+                if (feedItem.getWorkDetail().equals("การนำเข้าห้องอบ") || feedItem.getWorkDetail().equals("ออกจากห้องอบ")) {
+                    Intent i = new Intent(mContext, UnitDeliver2.class);
                     i.putExtra("EmployeeID", feedItem.getEmployeeID());
-                    i.putExtra("OrderID",feedItem.getOrderID());
-                    i.putExtra("WorkDetail",feedItem.getWorkDetail());
-                    i.putExtra("Batch",feedItem.getBatch());
-                    i.putExtra("DepartID",feedItem.getDepartID());
-                    i.putExtra("UnitWork",feedItem.getUnitWork());
-                    i.putExtra("UnitFollow",feedItem.getUnitFollow());
-                    i.putExtra("UnitStock",feedItem.getUnitStock());
-                    i.putExtra("DateMFG",feedItem.getDateFail());
-                    i.putExtra("ID",feedItem.getId_work());
-                    i.putExtra("UnitInWork",feedItem.getUnitInWork());
+                    i.putExtra("OrderID", feedItem.getOrderID());
+                    i.putExtra("WorkDetail", feedItem.getWorkDetail());
+                    i.putExtra("Batch", feedItem.getBatch());
+                    i.putExtra("DepartID", feedItem.getDepartID());
+                    i.putExtra("UnitWork", feedItem.getUnitWork());
+                    i.putExtra("UnitFollow", feedItem.getUnitFollow());
+                    i.putExtra("UnitStock", feedItem.getUnitStock());
+                    i.putExtra("DateMFG", feedItem.getDateFail());
+                    i.putExtra("ID", feedItem.getId_work());
+                    i.putExtra("UnitInWork", feedItem.getUnitInWork());
                     mContext.startActivity(i);
-                }else{
+                } else {
                     CustomViewHolder holder = (CustomViewHolder) v.getTag();
                     final int position = holder.getPosition();
                     final FeedItem feedItem = feedItemList.get(position);
@@ -174,39 +177,39 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
                         e.printStackTrace();
                     }
 
-                    GetAllValues getUnitFailGroup = new GetAllValues(feedItem.getOrderID(),feedItem.getWorkDetail(),feedItem.getBatch());
+                    GetAllValues getUnitFailGroup = new GetAllValues(feedItem.getOrderID(), feedItem.getWorkDetail(), feedItem.getBatch());
                     String showUnitFailGroup = getUnitFailGroup.getUnitFailGroup();
 
-                    GetAllValues getUnitWorkGroup = new GetAllValues(feedItem.getOrderID(),feedItem.getWorkDetail(),feedItem.getBatch());
+                    GetAllValues getUnitWorkGroup = new GetAllValues(feedItem.getOrderID(), feedItem.getWorkDetail(), feedItem.getBatch());
                     String showUnitWorkGroup = getUnitWorkGroup.getUnitWorkGroup();
                     customViewHolder.totalUnitWork.setText(showUnitWorkGroup);
 
 
-                    GetAllValues unitInWorkGroupCheck = new GetAllValues(feedItem.getOrderID(),feedItem.getWorkDetail(),feedItem.getBatch());
+                    GetAllValues unitInWorkGroupCheck = new GetAllValues(feedItem.getOrderID(), feedItem.getWorkDetail(), feedItem.getBatch());
                     //replace msgUnitInWork
                     String unitInWorkGroup = unitInWorkGroupCheck.getUnitInWorkGroup();
                     customViewHolder.hideUnitInWorkGroup.setText(unitInWorkGroup);
                     customViewHolder.countLike.setText(msg);
                     int sumUnit;
-                   // int UnitInWorkCheck = Integer.parseInt(msgUnitInWork);
+                    // int UnitInWorkCheck = Integer.parseInt(msgUnitInWork);
                     int UnitInWorkCheck = Integer.parseInt(unitInWorkGroup);
-                   // sumUnit = Integer.parseInt(msg)+Integer.parseInt(msgUnitFail);
-                    sumUnit = Integer.parseInt(showUnitWorkGroup)+Integer.parseInt(showUnitFailGroup);
+                    // sumUnit = Integer.parseInt(msg)+Integer.parseInt(msgUnitFail);
+                    sumUnit = Integer.parseInt(showUnitWorkGroup) + Integer.parseInt(showUnitFailGroup);
                     final AlertDialog.Builder dDialog = new AlertDialog.Builder(mContext);
-                    if(UnitInWorkCheck < sumUnit){
+                    if (UnitInWorkCheck < sumUnit) {
                         dDialog.setTitle("หยุด");
                         dDialog.setMessage("ค่าเกินจำนวน");
                         dDialog.setPositiveButton("Close", null);
                         dDialog.show();
-                        int overUnitWork = Integer.parseInt(msg)-1;
+                        int overUnitWork = Integer.parseInt(msg) - 1;
                         //int overUnitWork = Integer.parseInt(unitInWorkGroup)-1;
                         String strOverUnitWork = Integer.toString(overUnitWork);
                         //customViewHolder.totalUnitWork.setText(strOverUnitWork);
                         customViewHolder.countLike.setText(strOverUnitWork);
                         //update data
-                        QuerySQL updateOver = new QuerySQL(strOverUnitWork,update_count_work);
+                        QuerySQL updateOver = new QuerySQL(strOverUnitWork, update_count_work);
                         updateOver.normalLike();
-                        int showUnitInWork = Integer.parseInt(customViewHolder.totalUnitWork.getText().toString())-1;
+                        int showUnitInWork = Integer.parseInt(customViewHolder.totalUnitWork.getText().toString()) - 1;
                         String arrShowTotal = Integer.toString(showUnitInWork);
                         customViewHolder.totalUnitWork.setText(arrShowTotal);
 
@@ -241,10 +244,10 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
 //            e.printStackTrace();
 //        }
 
-        GetAllValues getUnitWorkGroup = new GetAllValues(feedItem.getOrderID(),feedItem.getWorkDetail(),feedItem.getBatch());
+        GetAllValues getUnitWorkGroup = new GetAllValues(feedItem.getOrderID(), feedItem.getWorkDetail(), feedItem.getBatch());
         String showUnitWorkGroup = getUnitWorkGroup.getUnitWorkGroup();
         customViewHolder.totalUnitWork.setText(showUnitWorkGroup);
-       // customViewHolder.countLike.setText(showUnitWorkGroup);
+        // customViewHolder.countLike.setText(showUnitWorkGroup);
         //end
 
         //dislike long click.....
@@ -273,10 +276,10 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
 
                 //******************check**************************//
 
-                GetAllValues getUnitFailGroup = new GetAllValues(feedItem.getOrderID(),feedItem.getWorkDetail(),feedItem.getBatch());
+                GetAllValues getUnitFailGroup = new GetAllValues(feedItem.getOrderID(), feedItem.getWorkDetail(), feedItem.getBatch());
                 String showUnitFailGroup = getUnitFailGroup.getUnitFailGroup();
 
-                GetAllValues getUnitWorkGroup = new GetAllValues(feedItem.getOrderID(),feedItem.getWorkDetail(),feedItem.getBatch());
+                GetAllValues getUnitWorkGroup = new GetAllValues(feedItem.getOrderID(), feedItem.getWorkDetail(), feedItem.getBatch());
                 String showUnitWorkGroup = getUnitWorkGroup.getUnitWorkGroup();
 
                 //*************************************************//
@@ -296,7 +299,7 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
                     e.printStackTrace();
                 }
 
-                GetAllValues unitInWorkGroupCheck = new GetAllValues(feedItem.getOrderID(),feedItem.getWorkDetail(),feedItem.getBatch());
+                GetAllValues unitInWorkGroupCheck = new GetAllValues(feedItem.getOrderID(), feedItem.getWorkDetail(), feedItem.getBatch());
                 String unitInWorkGroup = unitInWorkGroupCheck.getUnitInWorkGroup();
                 //int checkUnitInWorkFail = Integer.parseInt(showUnitInWorkFail);
                 int checkUnitInWorkFail = Integer.parseInt(unitInWorkGroup);
@@ -337,7 +340,7 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
         });
         //-----------------------------End Dislike--------------------------------//
         //-----------------------------update total UnitFail-----------------------//
-        GetAllValues getUnitFailGroup = new GetAllValues(feedItem.getOrderID(),feedItem.getWorkDetail(),feedItem.getBatch());
+        GetAllValues getUnitFailGroup = new GetAllValues(feedItem.getOrderID(), feedItem.getWorkDetail(), feedItem.getBatch());
         String UnitFailGroup = getUnitFailGroup.getUnitFailGroup();
         customViewHolder.totalUnitFail.setText(UnitFailGroup);
         //------------------------------------------------------------------------//
@@ -360,12 +363,11 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
         }
         String have = "มี";
         String none = "ไม่มี";
-        if(Integer.parseInt(showUnitFail) > 0)
-        {
+        if (Integer.parseInt(showUnitFail) > 0) {
             QuerySQL updateHave = new QuerySQL(have, feedItem.getId_work());
             updateHave.updateHave();
 
-        }else{
+        } else {
             QuerySQL updateHave = new QuerySQL(none, feedItem.getId_work());
             updateHave.updateHave();
         }
@@ -413,9 +415,9 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
         public ImageView imageView;
         public TextView textView;
         public TextView textBatch;
-        public ImageButton btnLike,btnDislike,btnTransfer;
-        public TextView countLike,countDislike,nameEmployee;
-        public TextView totalUnitWork,totalUnitFail;
+        public ImageButton btnLike, btnDislike, btnTransfer;
+        public TextView countLike, countDislike, nameEmployee;
+        public TextView totalUnitWork, totalUnitFail;
         public TextView hideUnitInWorkGroup;
 
         public CustomViewHolder(View view) {
@@ -423,15 +425,15 @@ public class MyRecyclerAdapterGroup extends RecyclerView.Adapter<MyRecyclerAdapt
             this.imageView = (ImageView) view.findViewById(R.id.thumbnail);
             this.textView = (TextView) view.findViewById(R.id.title);
             this.textBatch = (TextView) view.findViewById(R.id.batch);
-            this.btnLike = (ImageButton)view.findViewById(R.id.like);
-            this.btnDislike = (ImageButton)view.findViewById(R.id.dislike);
-            this.btnTransfer = (ImageButton)view.findViewById(R.id.btnTransfer);
-            this.countLike = (TextView)view.findViewById(R.id.textLike);
-            this.countDislike = (TextView)view.findViewById(R.id.textDislike);
-            this.nameEmployee = (TextView)view.findViewById(R.id.nameEmployee);
-            this.totalUnitWork = (TextView)view.findViewById(R.id.totalUnitWork);
-            this.totalUnitFail = (TextView)view.findViewById(R.id.totalUnitFail);
-            this.hideUnitInWorkGroup = (TextView)view.findViewById(R.id.hide_unitInWork);
+            this.btnLike = (ImageButton) view.findViewById(R.id.like);
+            this.btnDislike = (ImageButton) view.findViewById(R.id.dislike);
+            this.btnTransfer = (ImageButton) view.findViewById(R.id.btnTransfer);
+            this.countLike = (TextView) view.findViewById(R.id.textLike);
+            this.countDislike = (TextView) view.findViewById(R.id.textDislike);
+            this.nameEmployee = (TextView) view.findViewById(R.id.nameEmployee);
+            this.totalUnitWork = (TextView) view.findViewById(R.id.totalUnitWork);
+            this.totalUnitFail = (TextView) view.findViewById(R.id.totalUnitFail);
+            this.hideUnitInWorkGroup = (TextView) view.findViewById(R.id.hide_unitInWork);
         }
     }
 }

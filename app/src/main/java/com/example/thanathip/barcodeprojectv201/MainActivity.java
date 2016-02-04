@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     SwipeRefreshLayout mSwipeRefresh;
     public static final int DIALOG_DOWNLOAD_JSON_PROGRESS = 0;
     WifiManager wifimanager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
         // This work only for android 4.4+
-        if(currentApiVersion >= Build.VERSION_CODES.KITKAT)
-        {
+        if (currentApiVersion >= Build.VERSION_CODES.KITKAT) {
 
             getWindow().getDecorView().setSystemUiVisibility(flags);
 
@@ -79,14 +79,11 @@ public class MainActivity extends AppCompatActivity {
             // show up and won't hide
             final View decorView = getWindow().getDecorView();
             decorView
-                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-                    {
+                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
 
                         @Override
-                        public void onSystemUiVisibilityChange(int visibility)
-                        {
-                            if((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0)
-                            {
+                        public void onSystemUiVisibilityChange(int visibility) {
+                            if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
                                 decorView.setSystemUiVisibility(flags);
                             }
                         }
@@ -95,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //WIFI connection
-        wifimanager=(WifiManager)getSystemService(Context.WIFI_SERVICE);
+        wifimanager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         AlertDialog.Builder dDialog = new AlertDialog.Builder(MainActivity.this);
         switch (wifimanager.getWifiState()) {
 
@@ -135,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
         transaction.add(R.id.rootLayout, homePic);
         transaction.commit();
         //*********************End Home page*************************//
-        list = (ListView)findViewById(R.id.listView1);
-        mSwipeRefresh = (SwipeRefreshLayout)findViewById(R.id.swipe_to_refresh);
+        list = (ListView) findViewById(R.id.listView1);
+        mSwipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_to_refresh);
 
         GetDB();
 
@@ -175,8 +172,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected Dialog onCreateDialog(int id) {
-        switch(id){
-            case DIALOG_DOWNLOAD_JSON_PROGRESS :
+        switch (id) {
+            case DIALOG_DOWNLOAD_JSON_PROGRESS:
                 ProgressDialog mProgressDialog = new ProgressDialog(this);
                 mProgressDialog.setMessage("โปรดรอสักครู่...........");
                 mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -229,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
 
             return true;
-        }else if(id == R.id.home){
+        } else if (id == R.id.home) {
 //            HomePageFragment homePic = new HomePageFragment();
 //            FragmentTransaction transaction = getFragmentManager().beginTransaction();
 //            transaction.add(R.id.rootLayout, homePic);
@@ -248,10 +245,10 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("โปรแกรมการลงบันทึกข้อมูลการผลิตประจำวัน");
             getSupportActionBar().setElevation(20);
             return true;
-        }else if(id == R.id.list){
+        } else if (id == R.id.list) {
             MenuFragment menu = new MenuFragment();
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.rootLayout,menu);
+            transaction.replace(R.id.rootLayout, menu);
             transaction.commit();
             return true;
         }
@@ -292,13 +289,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String string) {
-                try{
+                try {
                     JSONArray json = new JSONArray(string);
                     final ArrayList<String> titleShow = new ArrayList<>();
                     titleShow.add("หน้าแรก");
                     final ArrayList<HashMap<String, String>> titleList = new ArrayList<>();
                     HashMap<String, String> map;
-                    for(int i=0;i<json.length();i++){
+                    for (int i = 0; i < json.length(); i++) {
                         JSONObject title = json.getJSONObject(i);
 
                         map = new HashMap<>();
@@ -336,7 +333,6 @@ public class MainActivity extends AppCompatActivity {
                                         mProgressDialog.show();
 
 
-
                                         ContentFragment contentView = new ContentFragment("xxx");
                                         FragmentTransaction ContentTransaction = getFragmentManager().beginTransaction().remove(contentView);
 
@@ -357,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
                                             }
                                         }, 1000);
                                     }
-                                },500);
+                                }, 500);
                                 drawerLayout.closeDrawer(GravityCompat.START);
 
                             } else if (list.getAdapter().getItem(position).toString().equals("ขึ้นรูปลูกถ้วย") ||
@@ -405,9 +401,9 @@ public class MainActivity extends AppCompatActivity {
                                             public void run() {
                                                 mProgressDialog.cancel();
                                             }
-                                        },1000);
+                                        }, 1000);
                                     }
-                                },500);
+                                }, 500);
 
                                 drawerLayout.closeDrawer(GravityCompat.START);
                                 titleName = list.getItemAtPosition(position).toString();
@@ -457,7 +453,7 @@ public class MainActivity extends AppCompatActivity {
                                         }, 1000);
 
                                     }
-                                },500);
+                                }, 500);
                                 drawerLayout.closeDrawer(GravityCompat.START);
                                 titleName = list.getItemAtPosition(position).toString();
                                 getSupportActionBar().setTitle(titleName);
@@ -465,12 +461,11 @@ public class MainActivity extends AppCompatActivity {
                             getFragmentManager().beginTransaction().remove(new HomePageFragment()).commit();
 
 
-
                         }
                     });
 
                     list.getAdapter();
-                }catch(JSONException e){
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
@@ -479,8 +474,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }.execute();
-
-
 
 
     }

@@ -40,31 +40,31 @@ public class ContentFragmentGroup extends Fragment {
     private MyRecyclerAdapterGroup adapter;
     SwipeRefreshLayout mSwipeRefresh;
     int MYACTIVITY_REQUEST_CODE = 101;
-    TextView titleProduct,titleBatch,titleGood,titleBad,titleTransfer;
+    TextView titleProduct, titleBatch, titleGood, titleBad, titleTransfer;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View content = inflater.inflate(R.layout.content_fragment,container,false);
+        View content = inflater.inflate(R.layout.content_fragment, container, false);
 
         Fragment fragment = getFragmentManager().findFragmentById(R.layout.home_page_fragment);
-        if(fragment != null){
+        if (fragment != null) {
             getFragmentManager().beginTransaction().remove(fragment).commit();
             Toast.makeText(getActivity(), "show clear fragment", Toast.LENGTH_SHORT).show();
         }
 
-        mSwipeRefresh = (SwipeRefreshLayout)content.findViewById(R.id.mSwipeFragment);
-        mRecyclerView = (RecyclerView)content.findViewById(R.id.recycler_view);
+        mSwipeRefresh = (SwipeRefreshLayout) content.findViewById(R.id.mSwipeFragment);
+        mRecyclerView = (RecyclerView) content.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
 
-        titleProduct = (TextView)content.findViewById(R.id.product_show);
-        titleBatch = (TextView)content.findViewById(R.id.batch_show);
-        titleGood = (TextView)content.findViewById(R.id.good_show);
-        titleBad = (TextView)content.findViewById(R.id.bad_show);
-        titleTransfer = (TextView)content.findViewById(R.id.transfer);
-        Typeface myCustomFont = Typeface.createFromAsset(getActivity().getAssets(),"font/NotoSerifThai-Bold.ttf");
-        Typeface EngFont = Typeface.createFromAsset(getActivity().getAssets(),"font/NotoSans-Bold.ttf");
+        titleProduct = (TextView) content.findViewById(R.id.product_show);
+        titleBatch = (TextView) content.findViewById(R.id.batch_show);
+        titleGood = (TextView) content.findViewById(R.id.good_show);
+        titleBad = (TextView) content.findViewById(R.id.bad_show);
+        titleTransfer = (TextView) content.findViewById(R.id.transfer);
+        Typeface myCustomFont = Typeface.createFromAsset(getActivity().getAssets(), "font/NotoSerifThai-Bold.ttf");
+        Typeface EngFont = Typeface.createFromAsset(getActivity().getAssets(), "font/NotoSans-Bold.ttf");
         titleProduct.setTypeface(myCustomFont);
         titleBatch.setTypeface(EngFont);
         titleGood.setTypeface(myCustomFont);
@@ -96,19 +96,18 @@ public class ContentFragmentGroup extends Fragment {
 
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if ((requestCode == MYACTIVITY_REQUEST_CODE) && (resultCode == Activity.RESULT_OK))
             adapter.notifyDataSetChanged();
     }
 
 
-    private void parseJSON(String result){
-        try{
+    private void parseJSON(String result) {
+        try {
             JSONArray posts = new JSONArray(result);
             List<FeedItem> feedsList = new ArrayList<>();
-            for(int i=0;i<posts.length();i++){
+            for (int i = 0; i < posts.length(); i++) {
                 JSONObject post = posts.optJSONObject(i);
                 FeedItem item = new FeedItem();
                 item.setId_work(post.optString("ID"));
@@ -139,13 +138,11 @@ public class ContentFragmentGroup extends Fragment {
                 mRecyclerView.smoothScrollToPosition(0);
 
 
-
-
                 //Toast.makeText(getActivity(),feedsList.get(i).getOrderID().toString(), Toast.LENGTH_SHORT).show();
 
 
             }
-        }catch(JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -197,7 +194,7 @@ public class ContentFragmentGroup extends Fragment {
         super.onResume();
         Log.i("Check", "onResume");
         //WIFI connection
-        WifiManager wifimanager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifimanager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
         AlertDialog.Builder dDialog = new AlertDialog.Builder(getActivity());
         switch (wifimanager.getWifiState()) {
 
@@ -241,9 +238,11 @@ public class ContentFragmentGroup extends Fragment {
 
         Log.i("Check", "onStop");
     }
-    ContentFragmentGroup(String getdata){
+
+    ContentFragmentGroup(String getdata) {
         this.getdata = getdata;
     }
+
     String getdata;
 
 }
