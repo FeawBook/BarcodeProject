@@ -53,9 +53,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initinstances();
 
 
+    }
 
+    private void initinstances() {
         //fullscreen
         int currentApiVersion = Build.VERSION.SDK_INT;
 
@@ -120,10 +123,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
-
         // Permission StrictMode
-        if (android.os.Build.VERSION.SDK_INT > 9) {
+        if (Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
@@ -169,14 +170,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getSupportActionBar().setTitle(titleName);
-
-
-
     }
-
-
-
-
 
 
     @Override
