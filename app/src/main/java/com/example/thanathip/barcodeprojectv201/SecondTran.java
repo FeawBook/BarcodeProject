@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,8 +41,9 @@ import java.util.ArrayList;
 
 public class SecondTran extends Activity {
     String[] numberOfTransfer = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "←", "ลบ"};
-    TextView edtNum, edtTran, edtBeforeTran, hintFollowID, txtName,txtTotal;
+    TextView edtNum, edtTran, edtBeforeTran, hintFollowID, txtName, txtTotal;
     TextView HowMuch;
+    int check = 0;
     //edtNum is a number in calculator
     //edtTran is a Values to update database
     Button edtNameFollow;
@@ -73,7 +75,7 @@ public class SecondTran extends Activity {
     String UnitWorkJson;
     int UnitWorkNum;
     String tempEmp;
-   // int checkNull = 0;
+    // int checkNull = 0;
     String updateFollowerValues;
     WifiManager wifimanager;
     GridView grid_transfer;
@@ -84,7 +86,7 @@ public class SecondTran extends Activity {
     private GoogleApiClient client;
 
     //Animation Right to left
-    Animation animation,animation2;
+    Animation animation, animation2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +94,7 @@ public class SecondTran extends Activity {
         setContentView(R.layout.activity_second);
         grid_transfer = (GridView) findViewById(R.id.transfer_grid);
         animation = AnimationUtils.loadAnimation(SecondTran.this, R.anim.right_to_left);
-        animation2 = AnimationUtils.loadAnimation(SecondTran.this,R.anim.up_from_bottom);
+        animation2 = AnimationUtils.loadAnimation(SecondTran.this, R.anim.up_from_bottom);
 
         edtNum = (TextView) findViewById(R.id.edtNumber);
         edtTran = (TextView) findViewById(R.id.unitTran);
@@ -106,9 +108,9 @@ public class SecondTran extends Activity {
         imgEmp = (ImageView) findViewById(R.id.imgEmployee);
         txtName = (TextView) findViewById(R.id.txtNameShow);
         btnPalace = (Button) findViewById(R.id.palace);
-        txtTotal = (TextView)findViewById(R.id.numTran);
-        unitInworkTemp = (TextView)findViewById(R.id.txtUnitInWorkTemp);
-        HowMuch = (TextView)findViewById(R.id.how_much);
+        txtTotal = (TextView) findViewById(R.id.numTran);
+        unitInworkTemp = (TextView) findViewById(R.id.txtUnitInWorkTemp);
+        HowMuch = (TextView) findViewById(R.id.how_much);
 
         edtTran.setVisibility(View.INVISIBLE);
         Intent i = getIntent();
@@ -124,8 +126,7 @@ public class SecondTran extends Activity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
         // This work only for android 4.4+
-        if(currentApiVersion >= Build.VERSION_CODES.KITKAT)
-        {
+        if (currentApiVersion >= Build.VERSION_CODES.KITKAT) {
 
             getWindow().getDecorView().setSystemUiVisibility(flags);
 
@@ -134,14 +135,11 @@ public class SecondTran extends Activity {
             // show up and won't hide
             final View decorView = getWindow().getDecorView();
             decorView
-                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-                    {
+                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
 
                         @Override
-                        public void onSystemUiVisibilityChange(int visibility)
-                        {
-                            if((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0)
-                            {
+                        public void onSystemUiVisibilityChange(int visibility) {
+                            if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
                                 decorView.setSystemUiVisibility(flags);
                             }
                         }
@@ -149,7 +147,7 @@ public class SecondTran extends Activity {
         }
 
         //WIFI connection
-        wifimanager=(WifiManager)getSystemService(Context.WIFI_SERVICE);
+        wifimanager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         switch (wifimanager.getWifiState()) {
 
             case WifiManager.WIFI_STATE_DISABLED:
@@ -260,7 +258,7 @@ public class SecondTran extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String select;
                 select = grid_transfer.getItemAtPosition(position).toString();
-               // int calTransfer = Integer.parseInt(unitWork);
+                // int calTransfer = Integer.parseInt(unitWork);
                 if (select == "ลบ") {
                     edtNum.setText("");
                 } else if (select == "←") {
@@ -307,9 +305,9 @@ public class SecondTran extends Activity {
                     }
                 }
                 edtNum.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
-                if(edtNum.getText().toString().equals(null)){
+                if (edtNum.getText().toString().equals(null)) {
                     checkDigit = 0;
-                }else{
+                } else {
                     checkDigit = 1;
                 }
             }
@@ -378,7 +376,7 @@ public class SecondTran extends Activity {
                     QuerySQL genIDtoName = new QuerySQL(peopleID);
                     String genName = genIDtoName.getEmpName();
                     String NameNext;
-                  //  String iNameNext;
+                    //  String iNameNext;
                     String sNameNext;
 
                     try {
@@ -456,9 +454,6 @@ public class SecondTran extends Activity {
                     });
 
 
-
-
-
                     Handler present = new Handler();
                     present.postDelayed(new Runnable() {
                         @Override
@@ -466,7 +461,7 @@ public class SecondTran extends Activity {
 
                             imgEmp.setVisibility(View.VISIBLE);
                             txtName.setVisibility(View.VISIBLE);
-                           // btnPalace.setVisibility(View.VISIBLE);
+                            // btnPalace.setVisibility(View.VISIBLE);
                             imgEmp.setAnimation(animation);
                             txtName.setAnimation(animation);
                             //btnPalace.setAnimation(animation);
@@ -495,14 +490,13 @@ public class SecondTran extends Activity {
                 }
             });
             //>>>>>>>>>>>>>>>>>>>>>>>>>>> end ออกจากเตา <<<<<<<<<<<<<<<<<<<<<<<<<<<<//
-        }else{
+        } else {
             edtNameFollow.setVisibility(View.GONE);
             followPic.setVisibility(View.GONE);
             QuerySQL getNameNext = new QuerySQL(serviceProduct, BatchNo, orderID);
             String showNext = getNameNext.getServiceProduct();
             showList(showNext);
         }
-
 
 
         //************************************end show list to transfer*********************************//
@@ -572,9 +566,6 @@ public class SecondTran extends Activity {
                     checkPressButton = 1;
 
 
-
-
-
                     Handler present = new Handler();
                     present.postDelayed(new Runnable() {
                         @Override
@@ -584,10 +575,10 @@ public class SecondTran extends Activity {
                             txtName.setVisibility(View.VISIBLE);
 
 
-                            if(work_detail.equals("บริการดิน")){
+                            if (work_detail.equals("บริการดิน")) {
                                 btnPalace.setVisibility(View.VISIBLE);
                                 btnPalace.setAnimation(animation);
-                            }else{
+                            } else {
                                 btnPalace.setVisibility(View.GONE);
                             }
 
@@ -596,7 +587,7 @@ public class SecondTran extends Activity {
 
 
                         }
-                    },200);
+                    }, 200);
                     present.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -609,7 +600,7 @@ public class SecondTran extends Activity {
                             grid_transfer.setAnimation(animation2);
                             btnOK.setAnimation(animation2);
                         }
-                    },500);
+                    }, 500);
 
                     QuerySQL compareName = new QuerySQL(getNameToUse);
                     String jsonCompareName = compareName.getPeopleID();
@@ -651,7 +642,7 @@ public class SecondTran extends Activity {
                     unitInworkTemp.setText(finalEmployeeID);
 
 
-                    checkPressButton = 1 ;
+                    checkPressButton = 1;
                 }
             });
 
@@ -680,7 +671,6 @@ public class SecondTran extends Activity {
             });
 
 
-
             //--------------------Ok Button---------------------//
             btnOK.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -692,21 +682,44 @@ public class SecondTran extends Activity {
                         //check UnitInwork......
                         GetAllValues getAllUnitInWork = new GetAllValues(work_detail, PersonalID, orderID, BatchNo);
                         UnitInWorkCheckForService = getAllUnitInWork.getUnitInWork();
+                        int unitInWork_check = 0;
 
-                        int unitInWork_check = Integer.parseInt(UnitInWorkCheckForService);
-                        int unit_to_transfer = Integer.parseInt(edtNum.getText().toString());
+                        try {
+                            unitInWork_check = Integer.parseInt(UnitInWorkCheckForService);
+                        } catch (NumberFormatException e) {
+                            check = 1;
+                            Toast.makeText(SecondTran.this, "กรุณากรอกตัวเลข", Toast.LENGTH_SHORT).show();
+                        }
+                        int unit_to_transfer = 0;
+                        try {
+                            unit_to_transfer = Integer.parseInt(edtNum.getText().toString());
+                        } catch (NumberFormatException e) {
+                            check = 1;
+                            Toast.makeText(SecondTran.this, "กรุณากรอกตัวเลข", Toast.LENGTH_SHORT).show();
+                        }
+
                         if (unitInWork_check - unit_to_transfer >= 0) {
                             //can transfer......
                             //check values
+                            int sum = 0;
                             String total = edtNum.getText().toString();
-                            int sum = Integer.parseInt(total) + Integer.parseInt(UnitFollow);
+                            try {
+                                sum = Integer.parseInt(total) + Integer.parseInt(UnitFollow);
+                            } catch (NumberFormatException e) {
+
+                            }
                             String UnitFollowSum = Integer.toString(sum);
                             QuerySQL updateUnitFollowAndEmIDFollow = new QuerySQL(UnitFollowSum, unitInworkTemp.getText().toString(), PersonalID, orderID, work_detail, BatchNo);
                             updateUnitFollowAndEmIDFollow.updateUnitFollowAndEmIDFollow();
 
 
                             //update follower values
-                            totalTran2 = Integer.parseInt(UnitInWorkFollower) + Integer.parseInt(total);
+                            try {
+                                totalTran2 = Integer.parseInt(UnitInWorkFollower) + Integer.parseInt(total);
+                            } catch (NumberFormatException e) {
+
+                            }
+
                             updateFollowerValues = Integer.toString(totalTran2);
                             //send totalTran2,finalEmployeeID1,OrderID,dickProduct,Batch
 
@@ -732,10 +745,9 @@ public class SecondTran extends Activity {
                                 QuerySQL updateUnitWorkService = new QuerySQL(ID, serviceProduct, totalUnitWork);
                                 updateUnitWorkService.updateUnitWorkService();
                                 edtNum.setText("");
-
-
                                 Toast.makeText(SecondTran.this, "ทำการโอนเรียบร้อย", Toast.LENGTH_SHORT).show();
                                 finish();
+
                             } else if (work_detail.equals("เช็คสต๊อคดินแท่ง")) {
                                 String totalUnitToTransfer = edtNum.getText().toString();
                                 //update UnitWork for check stock.........
@@ -747,9 +759,19 @@ public class SecondTran extends Activity {
                                 updateUnitInWorkService.updateUnitInWorkForService();
                                 Toast.makeText(SecondTran.this, orderID, Toast.LENGTH_LONG).show();
                                 finish();
+
                             } else {
-                                Toast.makeText(SecondTran.this, "การโอนสำเร็จ " + " " + tempWorkDetailToTransfer, Toast.LENGTH_SHORT).show();
-                                finish();
+
+                                if (check == 1) {
+                                    Log.e("check activity", Integer.toString(check));
+                                    check = 0;
+                                    //finish();
+                                } else if (check == 0) {
+                                    Log.e("check activity2", Integer.toString(check));
+                                    Toast.makeText(SecondTran.this, "การโอนสำเร็จ", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                                // finish();
                             }
 
                         } else {
@@ -767,8 +789,6 @@ public class SecondTran extends Activity {
             });
 
 
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -784,12 +804,11 @@ public class SecondTran extends Activity {
     }
 
 
-
     @Override
     protected void onPostResume() {
         super.onPostResume();
         //WIFI connection
-        wifimanager=(WifiManager)getSystemService(Context.WIFI_SERVICE);
+        wifimanager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         AlertDialog.Builder dDialog = new AlertDialog.Builder(SecondTran.this);
         switch (wifimanager.getWifiState()) {
 
