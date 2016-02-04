@@ -20,55 +20,53 @@
         android:paddingTop="10dp">
 
 
+        <TextView
+            android:id="@+id/pic_show"
+            android:layout_marginLeft="100dp"
+            android:freezesText="true"
+            android:text="รูป"
+            android:textSize="24dp"
+            android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/pic_show"
-                android:layout_marginLeft="100dp"
-                android:freezesText="true"
-                android:text="รูป"
-                android:textSize="24dp"
-                android:visibility="gone" />
+        <TextView
+            android:id="@+id/product_show"
+            android:layout_marginLeft="100dp"
+            android:freezesText="true"
+            android:text="ผลิตภัณฑ์"
+            android:textSize="24dp"
+            android:visibility="gone" />
 
-            <TextView
-                android:visibility="gone"
-                android:id="@+id/product_show"
-                android:layout_marginLeft="100dp"
-                android:freezesText="true"
-                android:text="ผลิตภัณฑ์"
-                android:textSize="24dp" />
+        <TextView
+            android:id="@+id/batch_show"
+            android:layout_marginLeft="65dp"
+            android:freezesText="true"
+            android:text="Batch"
+            android:textSize="24dp"
+            android:visibility="gone" />
 
-            <TextView
-                android:visibility="gone"
-                android:id="@+id/batch_show"
-                android:layout_marginLeft="65dp"
-                android:freezesText="true"
-                android:text="Batch"
-                android:textSize="24dp" />
+        <TextView
+            android:id="@+id/good_show"
+            android:layout_marginLeft="132dp"
+            android:freezesText="true"
+            android:text="ดี"
+            android:textSize="24dp"
+            android:visibility="gone" />
 
-            <TextView
-                android:visibility="gone"
-                android:id="@+id/good_show"
-                android:layout_marginLeft="132dp"
-                android:freezesText="true"
-                android:text="ดี"
-                android:textSize="24dp" />
+        <TextView
+            android:id="@+id/bad_show"
+            android:layout_marginLeft="127dp"
+            android:freezesText="true"
+            android:text="เสีย"
+            android:textSize="24dp"
+            android:visibility="gone" />
 
-            <TextView
-                android:visibility="gone"
-                android:id="@+id/bad_show"
-                android:layout_marginLeft="127dp"
-                android:freezesText="true"
-                android:text="เสีย"
-                android:textSize="24dp" />
-
-            <TextView
-                android:visibility="gone"
-                android:id="@+id/transfer"
-                android:layout_marginLeft="108dp"
-                android:freezesText="true"
-                android:text="โอน"
-                android:textSize="24dp" />
-
+        <TextView
+            android:id="@+id/transfer"
+            android:layout_marginLeft="108dp"
+            android:freezesText="true"
+            android:text="โอน"
+            android:textSize="24dp"
+            android:visibility="gone" />
 
 
         <android.support.v4.widget.SwipeRefreshLayout
