@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -332,6 +333,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
 //แก้
 
                 }
+
             }
         });
         //-----------------------------End Dislike--------------------------------//
@@ -352,6 +354,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        Log.e("Fail >> ",showUnitFail);
         String have = "มี";
         String none = "ไม่มี";
         if (Integer.parseInt(showUnitFail) > 0) {

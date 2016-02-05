@@ -126,6 +126,8 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("mEmployeeID", value5));
         params.add(new BasicNameValuePair("mMarch", value6));
         params.add(new BasicNameValuePair("mDepartID", value7));
+        params.add(new BasicNameValuePair("mFailureID_ID_work", value8));
+
         return getHttpPost(url, params);
     }
 
@@ -495,6 +497,14 @@ public class QuerySQL extends Activity {
         return getHttpPost(url, params);
     }
 
+    public String sendFailureID() {
+        GetURL urls = new GetURL();
+        String url = urls.UpdateLink();
+        List<NameValuePair> params = new ArrayList<>();
+        params.add(new BasicNameValuePair("failureID_borad", value1));
+        return getHttpPost(url, params);
+    }
+
     //constructor
     //don't sort the article
 
@@ -559,6 +569,19 @@ public class QuerySQL extends Activity {
         this.value5 = value5;
         this.value6 = value6;
     }
+    //c8
+
+    QuerySQL(String value1, String value2, String value3, String value4, String value5, String value6, String value7, String value8) {
+        this.value1 = value1;
+        this.value2 = value2;
+        this.value3 = value3;
+        this.value4 = value4;
+        this.value5 = value5;
+        this.value6 = value6;
+        this.value7 = value7;
+        this.value8 = value8;
+
+    }
 
 
     String value1;
@@ -568,6 +591,7 @@ public class QuerySQL extends Activity {
     String value5;
     String value6;
     String value7;
+    String value8;
 
 
     public String getHttpPost(String url, List<NameValuePair> params) {

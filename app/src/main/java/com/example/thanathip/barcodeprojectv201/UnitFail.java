@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -36,9 +37,9 @@ import java.util.HashMap;
 public class UnitFail extends Activity {
 
     //private List<FeedItem> feedsList;
-    GridView failContent,failContent2;
+    GridView failContent, failContent2;
     //private MyRecyclerAdapter adapter;
-    Button btnAnother,btnOK;
+    Button btnAnother, btnOK;
     Context mContext;
     ImageView pictureFail;
     TextView textDetail;
@@ -51,13 +52,13 @@ public class UnitFail extends Activity {
         setContentView(R.layout.activity_unit_fail);
 
 
-        failContent = (GridView)findViewById(R.id.gridview);
-        failContent2 = (GridView)findViewById(R.id.gridview2);
-        pictureFail = (ImageView)findViewById(R.id.pic_for_fail);
-        textDetail = (TextView)findViewById(R.id.textFailDetail);
-        btnOK = (Button)findViewById(R.id.btnOK);
-        btnBack = (Button)findViewById(R.id.btnBack);
-        autoCompleteTextView = (AutoCompleteTextView)findViewById(R.id.autoCompleteTextView1);
+        failContent = (GridView) findViewById(R.id.gridview);
+        failContent2 = (GridView) findViewById(R.id.gridview2);
+        pictureFail = (ImageView) findViewById(R.id.pic_for_fail);
+        textDetail = (TextView) findViewById(R.id.textFailDetail);
+        btnOK = (Button) findViewById(R.id.btnOK);
+        btnBack = (Button) findViewById(R.id.btnBack);
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
         // failContent.setAdapter(new FailList(this));
 
 
@@ -71,8 +72,7 @@ public class UnitFail extends Activity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
         // This work only for android 4.4+
-        if(currentApiVersion >= Build.VERSION_CODES.KITKAT)
-        {
+        if (currentApiVersion >= Build.VERSION_CODES.KITKAT) {
 
             getWindow().getDecorView().setSystemUiVisibility(flags);
 
@@ -81,14 +81,11 @@ public class UnitFail extends Activity {
             // show up and won't hide
             final View decorView = getWindow().getDecorView();
             decorView
-                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-                    {
+                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
 
                         @Override
-                        public void onSystemUiVisibilityChange(int visibility)
-                        {
-                            if((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0)
-                            {
+                        public void onSystemUiVisibilityChange(int visibility) {
+                            if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
                                 decorView.setSystemUiVisibility(flags);
                             }
                         }
@@ -104,7 +101,7 @@ public class UnitFail extends Activity {
         });
 
 
-        final String fail,DateFail,OrderID,batch,EmployeeID,MarchID,DepartID;
+        final String fail, DateFail, OrderID, batch, EmployeeID, MarchID, DepartID,ID;
         Intent i = getIntent();
         fail = i.getStringExtra("sendFail");
         batch = i.getStringExtra("Batch");
@@ -113,13 +110,15 @@ public class UnitFail extends Activity {
         EmployeeID = i.getStringExtra("EmployeeID");
         MarchID = i.getStringExtra("March");
         DepartID = i.getStringExtra("DepartID");
+
+
         // Toast.makeText(UnitFail.this,batch+" "+DateFail+" "+OrderID+" "+EmployeeID+" "+MarchID+" "+DepartID+" ", Toast.LENGTH_SHORT).show();
         failContent2.setVisibility(View.GONE);
         QuerySQL getDB = new QuerySQL(fail);
         final String fetchFail = getDB.getFailDetail();
         // Toast.makeText(this,fetchFail,Toast.LENGTH_LONG).show();
         String msg;
-        try{
+        try {
             JSONArray unitFail = new JSONArray(fetchFail);
 
 
@@ -127,7 +126,7 @@ public class UnitFail extends Activity {
 
             HashMap<String, String> map;
 
-            for(int j = 0 ; j < unitFail.length() ; j++){
+            for (int j = 0; j < unitFail.length(); j++) {
                 JSONObject objFail = unitFail.getJSONObject(j);
                 msg = objFail.getString("FailureID");
 
@@ -135,11 +134,10 @@ public class UnitFail extends Activity {
                 final QuerySQL FailureDetail = new QuerySQL(msg);
                 String testFetch = FailureDetail.getFailDetailDesc();
                 JSONArray thaiFail = new JSONArray(testFetch);
-                for(int k = 0;k < thaiFail.length();k++){
+                for (int k = 0; k < thaiFail.length(); k++) {
                     JSONObject objThai = thaiFail.getJSONObject(k);
                     map = new HashMap<>();
                     map.put("FailDetail", objThai.getString("FailDetail"));
-
 
 
                     titleList.add(map);
@@ -148,14 +146,12 @@ public class UnitFail extends Activity {
                 final SimpleAdapter sAdap;
 
 
-
                 String[] from = {"FailDetail"};
                 int[] to = {R.id.text1};
 
 
-                sAdap = new SimpleAdapter(UnitFail.this,titleList,R.layout.fail_detail_list,from,to);
+                sAdap = new SimpleAdapter(UnitFail.this, titleList, R.layout.fail_detail_list, from, to);
                 failContent.setAdapter(sAdap);
-
 
 
                 //on click
@@ -213,13 +209,15 @@ public class UnitFail extends Activity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
+                                Log.e("FailureID is >> ",FailureID);
 
+                                QuerySQL sendFailureID = new QuerySQL(FailureID);
+                                sendFailureID.sendFailureID();
 
-
-                                QuerySQL updateUnitFail = new QuerySQL(FailureID,batch,DateFail,
-                                        OrderID,EmployeeID,MarchID,DepartID);
+                                QuerySQL updateUnitFail = new QuerySQL(FailureID, batch, DateFail,
+                                        OrderID, EmployeeID, MarchID, DepartID,fail);
                                 updateUnitFail.getUpdateFailDetail();
-                                QuerySQL UpdateFail = new QuerySQL("fuck",fail);
+                                QuerySQL UpdateFail = new QuerySQL("fuck", fail);
                                 UpdateFail.getDislike();
                                 finish();
                                 Toast.makeText(UnitFail.this, "อัพเดตของเสียสำเร็จ", Toast.LENGTH_LONG).show();
@@ -232,19 +230,13 @@ public class UnitFail extends Activity {
 
             }
 
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
-
-
-
-
-
-
 //------------------------------------------------อื่นๆ--------------------------------------------------------------//
-        btnAnother = (Button)findViewById(R.id.Fail_etc);
+        btnAnother = (Button) findViewById(R.id.Fail_etc);
         btnAnother.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -261,13 +253,13 @@ public class UnitFail extends Activity {
 
                 final ArrayList<String> listDetailTest = new ArrayList<>();
                 String failDetailAuto;
-                try{
+                try {
 
 
                     HashMap<String, String> map;
 
                     JSONArray arrFailDetail = new JSONArray(listInAutoComplete.getShowDialogFail());
-                    for(int j=0;j<arrFailDetail.length();j++){
+                    for (int j = 0; j < arrFailDetail.length(); j++) {
                         map = new HashMap<>();
                         JSONObject objFailAuto = arrFailDetail.getJSONObject(j);
                         failDetailAuto = objFailAuto.getString("FailDetail");
@@ -277,12 +269,12 @@ public class UnitFail extends Activity {
 //                        String testOb = value.toString();
                         listDetailTest.add(failDetailAuto);
                     }
-                }catch (JSONException e){
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                final ArrayAdapter<String> adapter = new ArrayAdapter<>(UnitFail.this,R.layout.autocomplete_layout
-                        ,listDetailTest);
+                final ArrayAdapter<String> adapter = new ArrayAdapter<>(UnitFail.this, R.layout.autocomplete_layout
+                        , listDetailTest);
                 autoCompleteTextView.setAdapter(adapter);
                 failContent.setVisibility(View.INVISIBLE);
                 failContent2.setVisibility(View.VISIBLE);
@@ -350,9 +342,9 @@ public class UnitFail extends Activity {
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        final int count =  autoCompleteTextView.length();
+                        final int count = autoCompleteTextView.length();
                         autoCompleteTextView.setDropDownHeight(0);
-                        if(count == 0){
+                        if (count == 0) {
                             //setAdapter
                             btnAnother.setVisibility(View.VISIBLE);
                             final String fail;
@@ -362,7 +354,7 @@ public class UnitFail extends Activity {
                             String fetchFail = getDB.getFailDetail();
                             String msg;
 
-                            try{
+                            try {
                                 JSONArray unitFail = new JSONArray(fetchFail);
 
 
@@ -370,7 +362,7 @@ public class UnitFail extends Activity {
 
                                 HashMap<String, String> map;
 
-                                for(int j = 0 ; j < unitFail.length() ; j++){
+                                for (int j = 0; j < unitFail.length(); j++) {
                                     JSONObject objFail = unitFail.getJSONObject(j);
                                     msg = objFail.getString("FailureID");
 
@@ -378,11 +370,10 @@ public class UnitFail extends Activity {
                                     QuerySQL FailureDetail = new QuerySQL(msg);
                                     String testFetch = FailureDetail.getFailDetailDesc();
                                     JSONArray thaiFail = new JSONArray(testFetch);
-                                    for(int k = 0;k < thaiFail.length();k++){
+                                    for (int k = 0; k < thaiFail.length(); k++) {
                                         JSONObject objThai = thaiFail.getJSONObject(k);
                                         map = new HashMap<>();
                                         map.put("FailDetail", objThai.getString("FailDetail"));
-
 
 
                                         titleList.add(map);
@@ -391,12 +382,11 @@ public class UnitFail extends Activity {
                                     final SimpleAdapter sAdap;
 
 
-
                                     String[] from = {"FailDetail"};
                                     int[] to = {R.id.text1};
 
 
-                                    sAdap = new SimpleAdapter(UnitFail.this,titleList,R.layout.fail_detail_list,from,to);
+                                    sAdap = new SimpleAdapter(UnitFail.this, titleList, R.layout.fail_detail_list, from, to);
                                     failContent.setAdapter(sAdap);
 
                                     //end set adapter
@@ -454,23 +444,23 @@ public class UnitFail extends Activity {
 
 
                                                     final String finalFailureID = FailureID;
-                                                    QuerySQL updateUnitFail = new QuerySQL(finalFailureID,batch,DateFail,
-                                                            OrderID,EmployeeID,MarchID,DepartID);
+                                                    QuerySQL updateUnitFail = new QuerySQL(finalFailureID, batch, DateFail,
+                                                            OrderID, EmployeeID, MarchID, DepartID);
                                                     updateUnitFail.getUpdateFailDetail();
-                                                    QuerySQL UpdateFail = new QuerySQL("fuck",fail);
+                                                    QuerySQL UpdateFail = new QuerySQL("fuck", fail);
                                                     UpdateFail.getDislike();
                                                     finish();
-                                                    Toast.makeText(getApplicationContext(),"อัพเดตของเสียสำเร็จ",Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(getApplicationContext(), "อัพเดตของเสียสำเร็จ", Toast.LENGTH_LONG).show();
                                                 }
                                             });
 
                                         }
                                     });
                                 }
-                            }catch (JSONException e){
+                            } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                        }else{
+                        } else {
                             btnAnother.setVisibility(View.INVISIBLE);
                             failContent2.setAdapter(adapter);
                             failContent.setVisibility(View.GONE);
@@ -484,13 +474,13 @@ public class UnitFail extends Activity {
                                     Object selectListFailDetail = autoCompleteTextView.getAdapter().getItem(position);
                                     final String strSelectListFailDetailr = String.valueOf(selectListFailDetail);
                                     // Toast.makeText(UnitFail.this,strSelectListFailDetailr, Toast.LENGTH_SHORT).show();
-                                    textDetail.setText("คุณได้ทำการเลือก: "+strSelectListFailDetailr);
+                                    textDetail.setText("คุณได้ทำการเลือก: " + strSelectListFailDetailr);
                                     QuerySQL reverseToID = new QuerySQL(strSelectListFailDetailr);
                                     String resultID = reverseToID.getFailureID();
                                     String msg = "";
-                                    try{
+                                    try {
                                         JSONArray arrGetFailureID = new JSONArray(resultID);
-                                        for(int j=0;j<arrGetFailureID.length();j++){
+                                        for (int j = 0; j < arrGetFailureID.length(); j++) {
                                             JSONObject objGetFailureID = arrGetFailureID.getJSONObject(j);
                                             msg = objGetFailureID.getString("FailureID");
                                         }
@@ -506,7 +496,7 @@ public class UnitFail extends Activity {
                                                     .into(pictureFail);
                                         }
 
-                                    }catch(JSONException e){
+                                    } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
 
@@ -514,13 +504,13 @@ public class UnitFail extends Activity {
                                     btnOK.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
-                                            QuerySQL updateFailDetail = new QuerySQL(finalMsg,batch,DateFail,
-                                                    OrderID,EmployeeID,MarchID,DepartID);
+                                            QuerySQL updateFailDetail = new QuerySQL(finalMsg, batch, DateFail,
+                                                    OrderID, EmployeeID, MarchID, DepartID);
                                             updateFailDetail.getUpdateFailDetail();
-                                            QuerySQL UpdateFail = new QuerySQL("fuck",fail);
+                                            QuerySQL UpdateFail = new QuerySQL("fuck", fail);
                                             UpdateFail.getDislike();
                                             finish();
-                                            Toast.makeText(getApplicationContext(),"อัพเดตของเสียสำเร็จ",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "อัพเดตของเสียสำเร็จ", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                     //  Toast.makeText(UnitFail.this,msg,Toast.LENGTH_SHORT).show();
@@ -529,8 +519,6 @@ public class UnitFail extends Activity {
                         }
                     }
                 });
-
-
 
 
             }
@@ -557,7 +545,7 @@ public class UnitFail extends Activity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
@@ -589,7 +577,7 @@ public class UnitFail extends Activity {
     protected void onPostResume() {
         super.onPostResume();
         //WIFI connection
-        WifiManager wifimanager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifimanager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         AlertDialog.Builder dDialog = new AlertDialog.Builder(UnitFail.this);
         switch (wifimanager.getWifiState()) {
 
