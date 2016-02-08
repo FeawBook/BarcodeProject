@@ -173,7 +173,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("mPicID", value1));
-        Log.e("mPicID",value1);
         return getHttpPost(url, params);
     }
 
@@ -184,7 +183,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("mName", value1));
-        Log.e("mName", value1);
         return getHttpPost(url, params);
     }
 
@@ -195,7 +193,6 @@ public class QuerySQL extends Activity {
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("Work_ID", value1));
         params.add(new BasicNameValuePair("Work_ID", value1));
-        Log.e("Work_ID", value1);
         return getHttpPost(url, params);
     }
 
@@ -208,10 +205,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("mServiceProduct", value2));
         params.add(new BasicNameValuePair("mCheckStock", value3));
         params.add(new BasicNameValuePair("mOrderID", value4));
-        Log.e("mTotal", value1);
-        Log.e("mServiceProduct", value2);
-        Log.e("mCheckStock", value3);
-        Log.e("mOrderID", value4);
         return getHttpPost(url, params);
     }
 
@@ -221,7 +214,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("mProduct", value1));
-        Log.e("mProduct", value1);
         return getHttpPost(url, params);
     }
 
@@ -231,7 +223,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("mPictureFail", value1));
-        Log.e("mPictureFail", value1);
         return getHttpPost(url, params);
     }
 
@@ -241,7 +232,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("mUnitWorkShow", value1));
-        Log.e("mUnitWorkShow", value1);
         return getHttpPost(url, params);
     }
 
@@ -251,7 +241,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("mShowUnitFail", value1));
-        Log.e("mShowUnitFail", value1);
         return getHttpPost(url, params);
     }
 
@@ -262,8 +251,6 @@ public class QuerySQL extends Activity {
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("mEmployeeNext", value1));
         params.add(new BasicNameValuePair("mOrderIDNext", value2));
-        Log.e("mEmployeeNext", value1);
-        Log.e("mOrderIDNext", value2);
         return getHttpPost(url, params);
     }
 
@@ -273,7 +260,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("mFullName", value1));
-        Log.e("mFullName", value2);
         return getHttpPost(url, params);
     }
 
@@ -283,7 +269,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("mEmployeeIDforShow", value1));
-        Log.e("mEmployeeIDforShow", value1);
         return getHttpPost(url, params);
     }
 
@@ -295,9 +280,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("mExportFormStove", value1));
         params.add(new BasicNameValuePair("mWorkDetail", value2));
         params.add(new BasicNameValuePair("mBatch", value3));
-        Log.e("mExportFormStove", value1);
-        Log.e("mWorkDetail", value2);
-        Log.e("mBatch", value3);
         return getHttpPost(url, params);
     }
 
@@ -307,7 +289,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("mGetExportFormStove", value1));
-        Log.e("mGetExportFormStove", value1);
         return getHttpPost(url, params);
     }
 
@@ -319,9 +300,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("mMakeProduct", value1));
         params.add(new BasicNameValuePair("mBatch", value2));
         params.add(new BasicNameValuePair("mOrderIDMake", value3));
-        Log.e("mMakeProduct", value1);
-        Log.e("mBatch", value2);
-        Log.e("mOrderIDMake", value3);
         return getHttpPost(url, params);
     }
 
@@ -333,9 +311,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("mFlateMakeProduct", value1));
         params.add(new BasicNameValuePair("mBatch", value2));
         params.add(new BasicNameValuePair("mOrderFlate", value3));
-        Log.e("mFlateMakeProduct", value1);
-        Log.e("mBatch", value2);
-        Log.e("mOrderFlate", value3);
         return getHttpPost(url, params);
     }
 
@@ -348,9 +323,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("mEmployeeID", value1));
         params.add(new BasicNameValuePair("mDateMFG", value2));
         params.add(new BasicNameValuePair("mWorkDetail", value3));
-        Log.e("mEmployeeID", value1);
-        Log.e("mDateMFG", value2);
-        Log.e("mWorkDetail", value3);
         return getHttpPost(url, params);
     }
 
@@ -361,7 +333,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("OrderIDForProductionnew", value1));
-        Log.e("OrderIDForProductionnew", value1);
         return getHttpPost(url, params);
     }
 
@@ -375,11 +346,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("updateServiceProduct", value3));
         params.add(new BasicNameValuePair("updateCheckStock", value4));
         params.add(new BasicNameValuePair("updateOrderID", value5));
-        Log.e("updateUnitInWork", value1);
-        Log.e("updateUnitFailDetail", value2);
-        Log.e("updateServiceProduct", value3);
-        Log.e("updateCheckStock", value4);
-        Log.e("updateOrderID", value5);
         return getHttpPost(url, params);
     }
 
@@ -394,12 +360,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("updateOrderIDTran", value4));
         params.add(new BasicNameValuePair("updateWorkDetailTran", value5));
         params.add(new BasicNameValuePair("updateBatchTran", value6));
-        Log.e("updateUnitFollowTran", value1);
-        Log.e("updateEmployeeIDFollowTran", value2);
-        Log.e("updateEmployeeIDTran", value3);
-        Log.e("updateOrderIDTran", value4);
-        Log.e("updateWorkDetailTran", value5);
-        Log.e("updateBatchTran", value6);
         return getHttpPost(url, params);
     }
 
@@ -410,8 +370,6 @@ public class QuerySQL extends Activity {
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("getUnitFollowTran", value1));
         params.add(new BasicNameValuePair("getWorkDetailTran", value2));
-        Log.e("getUnitFollowTran", value1);
-        Log.e("getWorkDetailTran", value2);
         return getHttpPost(url, params);
     }
 
@@ -424,10 +382,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("getOrderIDForFollower", value2));//OrderID
         params.add(new BasicNameValuePair("getWorkDetailForFollower", value3));//WorkDetail(เจาะแต่งลูกถ้วย)
         params.add(new BasicNameValuePair("getBatchForFollower", value4));//Batch
-        Log.e("getFollowIDForFollower", value1);
-        Log.e("getOrderIDForFollower", value2);
-        Log.e("getWorkDetailForFollower", value3);
-        Log.e("getBatchForFollower", value4);
         return getHttpPost(url, params);
     }
 
@@ -441,11 +395,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("tempWorkDetailToTransfer", value3));
         params.add(new BasicNameValuePair("orderIDUnitInWork", value4));
         params.add(new BasicNameValuePair("BatchNoUnitInWork", value5));
-        Log.e("totalToTransfer", value1);
-        Log.e("EmpIDForFollower", value2);
-        Log.e("tempWorkDetailToTransfer", value3);
-        Log.e("orderIDUnitInWork", value4);
-        Log.e("BatchNoUnitInWork", value5);
         return getHttpPost(url, params);
     }
 
@@ -456,9 +405,6 @@ public class QuerySQL extends Activity {
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("have", value1));
         params.add(new BasicNameValuePair("idHave", value2));
-        Log.e("have", value1);
-        Log.e("idHave", value2);
-        Log.e("idHave", value2);
         return getHttpPost(url, params);
     }
 
@@ -472,11 +418,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("workDetail_show_unitWork", value3));
         params.add(new BasicNameValuePair("ID_show_unitWork", value4));
         params.add(new BasicNameValuePair("orderID_show_unitWork", value5));
-        Log.e("employeeID_show_unitWork", value1);
-        Log.e("another_show_unitWork", value2);
-        Log.e("workDetail_show_unitWork", value3);
-        Log.e("ID_show_unitWork", value4);
-        Log.e("orderID_show_unitWork", value5);
         return getHttpPost(url, params);
     }
 
@@ -489,10 +430,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("stove_fail_employeeID", value2));
         params.add(new BasicNameValuePair("stove_fail_cause", value3));
         params.add(new BasicNameValuePair("stove_fail_unitFail", value4));
-        Log.e("stove_fail_id", value1);
-        Log.e("stove_fail_employeeID", value2);
-        Log.e("stove_fail_cause", value3);
-        Log.e("stove_fail_unitFail", value4);
         return getHttpPost(url, params);
     }
 
@@ -507,12 +444,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("update_stove_unitInWork", value4));
         params.add(new BasicNameValuePair("update_stove_orderID", value5));
         params.add(new BasicNameValuePair("update_stove_workID", value6));
-        Log.e("update_stove_unitwork", value1);
-        Log.e("update_stove_workDetail", value2);
-        Log.e("update_stove_employeeID", value3);
-        Log.e("update_stove_unitInWork", value4);
-        Log.e("update_stove_orderID", value5);
-        Log.e("update_stove_workID", value6);
         return getHttpPost(url, params);
     }
 
@@ -523,7 +454,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("getURLproductPic", value1));
-        Log.e("getURLproductPic", value1);
         return getHttpPost(url, params);
     }
 
@@ -536,9 +466,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("ID_Work_Service", value1));
         params.add(new BasicNameValuePair("Service_product", value2));
         params.add(new BasicNameValuePair("total_unitWork_service", value3));
-        Log.e("ID_Work_Service", value1);
-        Log.e("Service_product", value2);
-        Log.e("total_unitWork_service", value3);
         return getHttpPost(url, params);
     }
 
@@ -550,9 +477,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("ID_Work_CheckStock", value1));
         params.add(new BasicNameValuePair("check_stock_product", value2));
         params.add(new BasicNameValuePair("check_stock_total", value3));
-        Log.e("ID_Work_CheckStock", value1);
-        Log.e("check_stock_product", value2);
-        Log.e("check_stock_total", value3);
         return getHttpPost(url, params);
     }
 
@@ -565,10 +489,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("workDetail_service", value2));
         params.add(new BasicNameValuePair("orderID_service", value3));
         params.add(new BasicNameValuePair("employeeID_service", value4));
-        Log.e("total_unitInWork_service", value1);
-        Log.e("workDetail_service", value2);
-        Log.e("orderID_service", value3);
-        Log.e("employeeID_service", value4);
         return getHttpPost(url, params);
     }
 
@@ -580,9 +500,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("palace_employee_next", value1));
         params.add(new BasicNameValuePair("palace_workDetail_next", value2));
         params.add(new BasicNameValuePair("palace_orderID_next", value3));
-        Log.e("palace_employee_next", value1);
-        Log.e("palace_workDetail_next", value2);
-        Log.e("palace_orderID_next", value3);
         return getHttpPost(url, params);
     }
 
@@ -593,9 +510,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("unitFailGroup_orderID", value1));
         params.add(new BasicNameValuePair("unitFailGroup_workDetail", value2));
         params.add(new BasicNameValuePair("unitFailGroup_batch", value3));
-        Log.e("unitFailGroup_orderID", value1);
-        Log.e("unitFailGroup_workDetail", value2);
-        Log.e("unitFailGroup_batch", value3);
         return getHttpPost(url, params);
     }
 
@@ -606,9 +520,6 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("unitInWork_orderID_group", value1));
         params.add(new BasicNameValuePair("unitInWork_workDetail_group", value2));
         params.add(new BasicNameValuePair("unitInWork_batch_group", value3));
-        Log.e("unitInWork_orderID_group", value1);
-        Log.e("unitInWork_workDetail_group", value2);
-        Log.e("unitInWork_batch_group", value3);
         return getHttpPost(url, params);
     }
 
@@ -617,7 +528,6 @@ public class QuerySQL extends Activity {
         String url = urls.UpdateLink();
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("failureID_borad", value1));
-        Log.e("failureID_borad", value1);
         return getHttpPost(url, params);
     }
 

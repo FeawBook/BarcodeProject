@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -209,7 +208,7 @@ public class UnitFail extends Activity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                                Log.e("FailureID is >> ",FailureID);
+                               // Log.e("FailureID is >> ",FailureID);
 
                                 QuerySQL sendFailureID = new QuerySQL(FailureID);
                                 sendFailureID.sendFailureID();
