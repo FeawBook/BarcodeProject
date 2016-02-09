@@ -100,7 +100,7 @@ public class UnitFail extends Activity {
         });
 
 
-        final String fail, DateFail, OrderID, batch, EmployeeID, MarchID, DepartID,ID;
+        final String fail, DateFail, OrderID, batch, EmployeeID, MarchID, DepartID, ID;
         Intent i = getIntent();
         fail = i.getStringExtra("sendFail");
         batch = i.getStringExtra("Batch");
@@ -208,13 +208,13 @@ public class UnitFail extends Activity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                               // Log.e("FailureID is >> ",FailureID);
+                                // Log.e("FailureID is >> ",FailureID);
 
                                 QuerySQL sendFailureID = new QuerySQL(FailureID);
                                 sendFailureID.sendFailureID();
 
                                 QuerySQL updateUnitFail = new QuerySQL(FailureID, batch, DateFail,
-                                        OrderID, EmployeeID, MarchID, DepartID,fail);
+                                        OrderID, EmployeeID, MarchID, DepartID, fail);
                                 updateUnitFail.getUpdateFailDetail();
                                 QuerySQL UpdateFail = new QuerySQL("fuck", fail);
                                 UpdateFail.getDislike();

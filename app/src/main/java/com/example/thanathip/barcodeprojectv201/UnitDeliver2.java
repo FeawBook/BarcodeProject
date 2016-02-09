@@ -26,23 +26,24 @@ import java.util.ArrayList;
 
 public class UnitDeliver2 extends Activity {
     GridView number;
-    String[] numberInGrid = new String[]{"1","2","3","4","5","6","7","8","9","0","←","ลบ"};
+    String[] numberInGrid = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "←", "ลบ"};
     TextView numberShow;
     ListView listDeliver;
-    String employeeID,NameID,OrderID,WorkDetail,Batch,DepartID,UnitStock,DateMFG,UnitWork,workID,ProductID;
-    String UnitInWork,UnitFail;
+    String employeeID, NameID, OrderID, WorkDetail, Batch, DepartID, UnitStock, DateMFG, UnitWork, workID, ProductID;
+    String UnitInWork, UnitFail;
     String checkStock = "เช็คสต๊อคดินแท่ง";
     String serviceProduct = "บริการดิน";
     String total;
     Button btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unit_deliver);
-        number = (GridView)findViewById(R.id.deliver_grid);
-        numberShow = (TextView)findViewById(R.id.txtShow);
-        listDeliver = (ListView)findViewById(R.id.list_deliver);
-        btnBack = (Button)findViewById(R.id.btnBack);
+        number = (GridView) findViewById(R.id.deliver_grid);
+        numberShow = (TextView) findViewById(R.id.txtShow);
+        listDeliver = (ListView) findViewById(R.id.list_deliver);
+        btnBack = (Button) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,8 +71,7 @@ public class UnitDeliver2 extends Activity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
         // This work only for android 4.4+
-        if(currentApiVersion >= Build.VERSION_CODES.KITKAT)
-        {
+        if (currentApiVersion >= Build.VERSION_CODES.KITKAT) {
 
             getWindow().getDecorView().setSystemUiVisibility(flags);
 
@@ -80,14 +80,11 @@ public class UnitDeliver2 extends Activity {
             // show up and won't hide
             final View decorView = getWindow().getDecorView();
             decorView
-                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-                    {
+                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
 
                         @Override
-                        public void onSystemUiVisibilityChange(int visibility)
-                        {
-                            if((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0)
-                            {
+                        public void onSystemUiVisibilityChange(int visibility) {
+                            if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
                                 decorView.setSystemUiVisibility(flags);
                             }
                         }
@@ -99,9 +96,9 @@ public class UnitDeliver2 extends Activity {
         final ArrayList<String> NameList = new ArrayList<>();
         QuerySQL genID = new QuerySQL(employeeID);
         String genNameID = genID.getPicID();
-        try{
+        try {
             JSONArray arrGenID = new JSONArray(genNameID);
-            for(int k=0;k<arrGenID.length();k++){
+            for (int k = 0; k < arrGenID.length(); k++) {
                 JSONObject objGenID = arrGenID.getJSONObject(k);
                 NameID = objGenID.getString("peopleID");
 
@@ -111,28 +108,28 @@ public class UnitDeliver2 extends Activity {
                 //String iNameNext = "";
                 String sNameNext;
 
-                try{
+                try {
                     JSONArray arrNameGen = new JSONArray(genName);
-                    for(int z=0;z<arrNameGen.length();z++){
+                    for (int z = 0; z < arrNameGen.length(); z++) {
                         JSONObject objNameGen = arrNameGen.getJSONObject(z);
                         NameNext = objNameGen.getString("fName");
-                       // iNameNext = objNameGen.getString("iName");
+                        // iNameNext = objNameGen.getString("iName");
                         sNameNext = objNameGen.getString("sName");
                         NameList.add(NameNext + " " + sNameNext);
                     }
-                }catch(JSONException e){
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
             }
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-        final ArrayAdapter<String> adapterName = new ArrayAdapter<>(UnitDeliver2.this,R.layout.deliver_name
-                ,NameList);
+        final ArrayAdapter<String> adapterName = new ArrayAdapter<>(UnitDeliver2.this, R.layout.deliver_name
+                , NameList);
         listDeliver.setAdapter(adapterName);
         //NUMBER
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.transfer_grid_row, R.id.numberDeliver,numberInGrid);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.transfer_grid_row, R.id.numberDeliver, numberInGrid);
         number.setAdapter(adapter);
 
         number.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -145,10 +142,9 @@ public class UnitDeliver2 extends Activity {
 
                 } else if (select == "←") {
                     String backSpace = numberShow.getText().toString();
-                    if(backSpace.length()>0){
-                        numberShow.setText(backSpace.substring(0,backSpace.length()-1));
-                    }
-                    else{
+                    if (backSpace.length() > 0) {
+                        numberShow.setText(backSpace.substring(0, backSpace.length() - 1));
+                    } else {
                         numberShow.setText("");
                     }
                     /*
@@ -165,44 +161,44 @@ public class UnitDeliver2 extends Activity {
         listDeliver.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               // String employeeName = listDeliver.getItemAtPosition(position).toString();
+                // String employeeName = listDeliver.getItemAtPosition(position).toString();
                 //employeeID OrderID  WorkDetail
 
                 int unitInWorkNum = Integer.parseInt(UnitInWork);
 
                 ProductID = getOrderID(OrderID);
-                UnitWork = getUnitWork(employeeID, DateMFG, WorkDetail,workID,OrderID);
+                UnitWork = getUnitWork(employeeID, DateMFG, WorkDetail, workID, OrderID);
                 int unitWorkNum = Integer.parseInt(UnitWork);
                 total = numberShow.getText().toString();
-                UnitFail = getUnitFail(employeeID,DateMFG,WorkDetail);
+                UnitFail = getUnitFail(employeeID, DateMFG, WorkDetail);
                 int unitFailNum = Integer.parseInt(UnitFail);
                 int sum = Integer.parseInt(total) + Integer.parseInt(UnitWork);
-                if(unitFailNum == 0){
+                if (unitFailNum == 0) {
                     UnitFail = "ไม่มี";
-                }else{
+                } else {
                     UnitFail = "มี";
                 }
 
-                if(ProductID.equals("SP20")){
-                    unitInWorkNum = unitWorkNum+unitFailNum+Integer.parseInt(total);
+                if (ProductID.equals("SP20")) {
+                    unitInWorkNum = unitWorkNum + unitFailNum + Integer.parseInt(total);
                     UnitInWork = Integer.toString(unitInWorkNum);
-                }else{
+                } else {
                     unitInWorkNum = Integer.parseInt(UnitInWork);
                 }
                 //add values to database
                 //update UnitWork
                 //update UnitInwork , FailDetail
-                if(WorkDetail.equals("การนำเข้าห้องอบ") || WorkDetail.equals("ออกจากห้องอบ")){
-                    String UnitWorks = getUnitWork(employeeID,"xxx",WorkDetail,workID,OrderID);
-                    int sumGood = Integer.parseInt(UnitWorks)+Integer.parseInt(total);
-                    QuerySQL updateStove = new QuerySQL(Integer.toString(sumGood),WorkDetail,employeeID,UnitInWork,OrderID,workID);
+                if (WorkDetail.equals("การนำเข้าห้องอบ") || WorkDetail.equals("ออกจากห้องอบ")) {
+                    String UnitWorks = getUnitWork(employeeID, "xxx", WorkDetail, workID, OrderID);
+                    int sumGood = Integer.parseInt(UnitWorks) + Integer.parseInt(total);
+                    QuerySQL updateStove = new QuerySQL(Integer.toString(sumGood), WorkDetail, employeeID, UnitInWork, OrderID, workID);
                     updateStove.updateGoodStove();
 
-                }else{
+                } else {
                     QuerySQL updateUnitWork = new QuerySQL(Integer.toString(sum), serviceProduct, checkStock, OrderID);
                     updateUnitWork.getUpdateUnitWork();
                     Toast.makeText(UnitDeliver2.this, "การโอนสำเร็จ", Toast.LENGTH_SHORT).show();
-                    QuerySQL updateUnitInWorkAndUnitFail = new QuerySQL(UnitInWork,UnitFail,serviceProduct,checkStock,OrderID);
+                    QuerySQL updateUnitInWorkAndUnitFail = new QuerySQL(UnitInWork, UnitFail, serviceProduct, checkStock, OrderID);
                     updateUnitInWorkAndUnitFail.getUpdateUnitInWorkAndUnitFail();
                 }
                 finish();
@@ -212,50 +208,50 @@ public class UnitDeliver2 extends Activity {
     }
 
     // get UnitWork,UnitFail Values
-    public String getUnitWork(String EmployeeID,String DateMFG,String WorkDetail,String workID,String OrderID){
-        QuerySQL genUnitWork = new QuerySQL(EmployeeID,DateMFG,WorkDetail,workID,OrderID);
+    public String getUnitWork(String EmployeeID, String DateMFG, String WorkDetail, String workID, String OrderID) {
+        QuerySQL genUnitWork = new QuerySQL(EmployeeID, DateMFG, WorkDetail, workID, OrderID);
         String jsonUnitWork = genUnitWork.getUnitWorkRight();
         String UnitWork = "";
-        try{
+        try {
             JSONArray arrUnitWork = new JSONArray(jsonUnitWork);
-            for(int j=0;j<arrUnitWork.length();j++){
+            for (int j = 0; j < arrUnitWork.length(); j++) {
                 JSONObject objUnitWork = arrUnitWork.getJSONObject(j);
                 UnitWork = objUnitWork.getString("UnitWork");
             }
-        }catch(JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return UnitWork;
     }
 
-    public String getUnitFail(String EmployeeID,String DateMFG,String WorkDetail){
-        QuerySQL genUnitFail = new QuerySQL(EmployeeID,DateMFG,WorkDetail);
+    public String getUnitFail(String EmployeeID, String DateMFG, String WorkDetail) {
+        QuerySQL genUnitFail = new QuerySQL(EmployeeID, DateMFG, WorkDetail);
         String jsonUnitWork = genUnitFail.getUnitWorkFull();
         String UnitFail = "";
-        try{
+        try {
             JSONArray arrUnitWork = new JSONArray(jsonUnitWork);
-            for(int j=0;j<arrUnitWork.length();j++){
+            for (int j = 0; j < arrUnitWork.length(); j++) {
                 JSONObject objUnitWork = arrUnitWork.getJSONObject(j);
                 UnitFail = objUnitWork.getString("UnitFail");
             }
-        }catch(JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return UnitFail;
     }
 
-    public String getOrderID(String OrderID){
+    public String getOrderID(String OrderID) {
         QuerySQL getOrderID = new QuerySQL(OrderID);
         String orderCheck = getOrderID.getOrderIDInProductionnew();
 
         String ProductID = "";
-        try{
+        try {
             JSONArray arrProductID = new JSONArray(orderCheck);
-            for(int j=0;j<arrProductID.length();j++){
+            for (int j = 0; j < arrProductID.length(); j++) {
                 JSONObject objProductID = arrProductID.getJSONObject(j);
                 ProductID = objProductID.getString("ProductID");
             }
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return ProductID;
@@ -286,7 +282,7 @@ public class UnitDeliver2 extends Activity {
     protected void onPostResume() {
         super.onPostResume();
         //WIFI connection
-        WifiManager wifimanager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifimanager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         AlertDialog.Builder dDialog = new AlertDialog.Builder(UnitDeliver2.this);
         switch (wifimanager.getWifiState()) {
 

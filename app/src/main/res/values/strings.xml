@@ -28,4 +28,6 @@
 
     <string name="title_activity_test_full_screen">TestFullScreen</string>
 
+    <string name="home_page">Home</string>
+
 </resources>
