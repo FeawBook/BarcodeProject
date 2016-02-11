@@ -209,4 +209,13 @@ public class FeedItem {
     public void setUnitInWork(String unitInWork) {
         this.unitInWork = unitInWork;
     }
+
+    public String getDateMFG(){
+        return DateMFG;
+    }
+
+    public void setDateMFG(String DateMFG){
+        this.DateMFG = DateMFG;
+    }
+
 }

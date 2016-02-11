@@ -121,6 +121,7 @@ public class ContentFragment extends Fragment {
                 item.setDepartID(post.optString("DepartID"));
                 item.setUnitStock(post.optString("UnitStock"));
                 item.setUnitInWork(post.optString("UnitInwork"));
+                item.setDateMFG(post.optString("DateMFG"));
                 feedsList.add(item);
                 adapter = new MyRecyclerAdapter(getActivity(), feedsList);
                 mRecyclerView.setAdapter(adapter);

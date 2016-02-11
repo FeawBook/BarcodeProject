@@ -241,10 +241,12 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         //----------------------------End Like Button-----------------------------//
         //update data UnitWork when change Activity
         String EmployeeID = feedItem.getId_work();
+
+        //Log.e("EmployeeID",feedItem.getEmployeeID());
+        // Log.e("DateMFG",feedItem.getDateMFG());
         QuerySQL getUnitWork = new QuerySQL(EmployeeID);
         String jsonUnitWork = getUnitWork.getUnitWork();
         String showUnitWork;
-
         try {
             JSONArray arrUnitWork = new JSONArray(jsonUnitWork);
             for (int j = 0; j < arrUnitWork.length(); j++) {
@@ -255,6 +257,9 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        GetAllValues getUnitWorkBoard = new GetAllValues(feedItem.getEmployeeID(), feedItem.getDateMFG());
+        customViewHolder.countLike.setText(getUnitWorkBoard.getUnitWorkBoard());
+
 
         //dislike long click.....
         customViewHolder.btnDislike.setOnLongClickListener(new View.OnLongClickListener() {
@@ -347,7 +352,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
             for (int j = 0; j < unitFail.length(); j++) {
                 JSONObject objUnitFail = unitFail.getJSONObject(j);
                 showUnitFail = objUnitFail.getString("UnitFail");
-                customViewHolder.countDislike.setText(showUnitFail);
+                //customViewHolder.countDislike.setText(showUnitFail);
 
             }
         } catch (JSONException e) {
@@ -364,6 +369,9 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
             QuerySQL updateHave = new QuerySQL(none, feedItem.getId_work());
             updateHave.updateHave();
         }
+
+        GetAllValues getUnitFailBoard = new GetAllValues(feedItem.getEmployeeID(), feedItem.getDateMFG());
+        customViewHolder.countDislike.setText(getUnitFailBoard.getUnitFailBoard());
         //-----------------------------Transfer Button-----------------------------//
 
         customViewHolder.btnTransfer.setOnClickListener(new View.OnClickListener() {
