@@ -536,7 +536,7 @@ public class SecondTran extends Activity {
                         //String iNameNext = "";
                         String sNameNext;
 
-                        try {
+                           try {
                             JSONArray arrNameGen = new JSONArray(genName);
                             for (int z = 0; z < arrNameGen.length(); z++) {
                                 JSONObject objNameGen = arrNameGen.getJSONObject(z);

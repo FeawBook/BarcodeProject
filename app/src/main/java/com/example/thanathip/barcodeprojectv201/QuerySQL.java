@@ -127,6 +127,14 @@ public class QuerySQL extends Activity {
         params.add(new BasicNameValuePair("mMarch", value6));
         params.add(new BasicNameValuePair("mDepartID", value7));
         params.add(new BasicNameValuePair("mFailureID_ID_work", value8));
+        Log.e("รหัสของเสีย1", value1);
+        Log.e("รหัสของเสีย2", value2);
+        Log.e("รหัสของเสีย3", value3);
+        Log.e("รหัสของเสีย4", value4);
+        Log.e("รหัสของเสีย5", value5);
+        Log.e("รหัสของเสีย6", value6);
+        Log.e("รหัสของเสีย7", value7);
+        Log.e("รหัสของเสีย8", value8);
         return getHttpPost(url, params);
     }
 

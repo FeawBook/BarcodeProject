@@ -216,6 +216,7 @@ public class UnitFail extends Activity {
                                 QuerySQL updateUnitFail = new QuerySQL(FailureID, batch, DateFail,
                                         OrderID, EmployeeID, MarchID, DepartID, fail);
                                 updateUnitFail.getUpdateFailDetail();
+                                // Toast.makeText(UnitFail.this,fail, Toast.LENGTH_LONG).show();
                                 QuerySQL UpdateFail = new QuerySQL("fuck", fail);
                                 UpdateFail.getDislike();
                                 finish();
@@ -316,9 +317,17 @@ public class UnitFail extends Activity {
                         btnOK.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+
+                                /*
+                                 QuerySQL updateUnitFail = new QuerySQL(FailureID, batch, DateFail,
+                                        OrderID, EmployeeID, MarchID, DepartID, fail);
+                                updateUnitFail.getUpdateFailDetail();
+                                * */
                                 QuerySQL updateFailDetail = new QuerySQL(finalMsg, batch, DateFail,
-                                        OrderID, EmployeeID, MarchID, DepartID);
+                                        OrderID, EmployeeID, MarchID, DepartID, fail);
                                 updateFailDetail.getUpdateFailDetail();
+
+                                //Log.e("DepartID",DepartID);
                                 QuerySQL UpdateFail = new QuerySQL("fuck", fail);
                                 UpdateFail.getDislike();
                                 finish();
@@ -444,7 +453,7 @@ public class UnitFail extends Activity {
 
                                                     final String finalFailureID = FailureID;
                                                     QuerySQL updateUnitFail = new QuerySQL(finalFailureID, batch, DateFail,
-                                                            OrderID, EmployeeID, MarchID, DepartID);
+                                                            OrderID, EmployeeID, MarchID, DepartID, fail);
                                                     updateUnitFail.getUpdateFailDetail();
                                                     QuerySQL UpdateFail = new QuerySQL("fuck", fail);
                                                     UpdateFail.getDislike();
